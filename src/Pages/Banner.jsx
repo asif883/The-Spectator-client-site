@@ -4,7 +4,7 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 
 
-const animation = { duration: 30000, easing: (t) => t }
+const animation = { duration: 50000, easing: (t) => t }
 
 const Banner = () => {
   
