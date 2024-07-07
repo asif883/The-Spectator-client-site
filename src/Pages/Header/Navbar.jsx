@@ -1,7 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
 import { IoSearchSharp } from "react-icons/io5";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/Context";
 
 const Navbar = () => {
+    const {user, logOut} =useContext(AuthContext)
+
+    const handleLogOut = ()=>{
+        logOut()
+        .then()
+        .catch()
+    }
     return (
           <div className="mt-6 max-w-7xl mx-auto">
             <div className="navbar bg-base-100">
@@ -37,13 +46,18 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center">
                     <div className="">
-                         <NavLink to='/' className="text-5xl mb-4 font-bold">The Spectator</NavLink>  
+                         <Link to='/' className="text-5xl mb-4 font-bold ">The Spectator</Link>  
                      </div>
                 </div>
                 <div className="navbar-end">
-                     <div className="">
-                        <NavLink to='/subscription' className='mr-3 font-medium'>Subscription</NavLink>
-                        <button className="bg-[#3A8CFB] text-white px-4 py-2 rounded-xl text-lg font-medium">Login</button>
+                     <div className="flex items-center gap-2">
+                        <NavLink to='/subscription' className='mr-3 font-medium hover:text-[#3A8CFB] hover:border-2 hover:border-blue-400 hover:p-3 hover:rounded-xl'>Subscription</NavLink>
+                        {
+                            user ? <button onClick={handleLogOut} className="bg-[#3A8CFB] text-white px-4 py-2 rounded-xl text-lg font-medium">LogOut</button>
+                            :
+                            <Link to='/login'><button className="bg-[#3A8CFB] text-white px-4 py-2 rounded-xl text-lg font-medium hover:text-[#3A8CFB] hover:border-2 hover:border-blue-400 hover:px-4 hover:py-2 hover:rounded-xl hover:bg-white">Login</button>
+                            </Link>
+                        }
                     </div>
                  </div>
            </div>           

@@ -16,7 +16,7 @@ const SubscriptionPage = () => {
                     <figure className="px-10 pt-10 flex flex-col text-center">
                     <h1 className="text-3xl font-bold">Monthly</h1>
                     
-                    <p className="text-5xl font-bold mt-4">$1</p>
+                    <p className="text-5xl font-bold mt-4">$10</p>
                     </figure>
                     <div className=" space-y-6 p-6 items-center text-center">
                         <h2 className="mt-4 font-semibold text-xl">Renews at $12.95/month</h2>
