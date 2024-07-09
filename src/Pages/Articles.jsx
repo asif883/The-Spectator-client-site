@@ -1,44 +1,91 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { FaAnglesDown } from "react-icons/fa6";
+import { FaAnglesUp } from "react-icons/fa6";
 
 
 const Articles = () => {
+        const [articles, setArticles] = useState([]);
+
+        useEffect(()=>{
+            fetch('http://localhost:5000/articles')
+            .then(res => res.json())
+            .then(data=> setArticles(data))
+        },[])
+
+
+        const [showAll, setShowAll] = useState(false);
+
+        const handleClick = () => {
+            setShowAll(!showAll);
+          };
+
     return (
         <div className="my-16 max-w-7xl mx-auto grid gap-6 grid-cols-4">
             {/* right */}
 
-            <div>
-                <div>
-                    <p className="text-blue-400 uppercase">Politics</p>
-                    <h3 className="text-xl font-bold">Biden's family is telling him to stay in the race even as calls to exit grow</h3>
-                </div>
-                <div className="mt-5 border-t pt-4">
-                    <p className="text-blue-400 uppercase">Politics</p>
-                    <h3 className="text-xl font-bold">Mark Cuban's still betting on Biden after that disastrous debate</h3>
-                </div>
-                <div className="mt-5 border-t pt-4">
-                    <p className="text-blue-400 uppercase">Careers</p>
-                    <h3 className="text-xl font-bold">Job interviews are about to get a whole lot more stressful</h3>
-                </div>
+            <div className="space-y-6">
+
+                {
+                   articles.map((article , idx) => 
+                    <div key={idx}>
+                          <p className="text-blue-400 uppercase mb-1">{article.tags}</p>
+                          <Link to={`details/${article._id}`} className="text-xl font-bold hover:underline hover:text-blue-400">{article.title}</Link>
+                     </div>
+                )
+                }
+                
             </div>
 
             {/* middle  */}
 
-            <div className="col-span-2">
-                <img className="w-[700px]" src="https://i.ibb.co/WVmmV2r/6647bdbc9fc063e829b2927a.webp" alt="" />
-                <h1 className="text-2xl font-semibold">The shadowy new way employees are cheating their way to the top</h1>
+           <div className="col-span-2 space-y-6">
+               {
+                    articles?.slice(0, showAll ? articles.length :2 )?.map((article ,idx) => 
+                        <Link to={`details/${article._id}`} key={idx} className="text-center ">
+                            <img className="w-[700px] h-[400px]" src={article.image} alt={article.tags} />
+                            <h1 className="text-2xl font-bold hover:underline hover:text-blue-400 mb-6">{article.title}</h1>
+                       </Link>
+
+                    )
+                }
+
+            <div className="text-center mt-8">
+                {
+                    articles?.length > 2 && (
+                        <button onClick={handleClick} className="border px-8 py-2 rounded-lg font-semibold text-lg">{
+                            showAll ? <FaAnglesUp></FaAnglesUp> :<FaAnglesDown></FaAnglesDown>
+                        }</button>
+                    )
+                }
             </div>
+           </div>
+
+           
 
             {/* left  */}
 
-            <div>
-                <div>
-                    <img src="https://i.ibb.co/rbc54wW/658354ec1c5c7b8c9a0aa0c3.webp" alt="" />
-                    <h3 className="text-lg font-bold mt-2">Bobby Jain's monster hedge fund is about to go live. Here is everyone Jain Global has hired so far.</h3>
-                </div>
-                <div className="mt-6">
-                    <img src="https://i.ibb.co/HqYQsDQ/667466fb58bc719d2c044496.webp" alt="" />
-                    <h3 className="text-lg font-bold mt-2">I wondered why Americans pay so much for dumb stuff. So I asked a $200-an-hour psychic.</h3>
-                </div>
+            <div className="space-y-4">
+                {
+                    articles?.slice(0, showAll ? articles.length :3 )?.map((article, idx) => 
+                    <div key={idx} className="text-center">
+                        <img className="h-64 w-full" src={article.image} alt="" />
+                        <h3 className="text-lg font-bold mt-2 hover:underline hover:text-blue-400">{article.title}</h3>
+                   </div>
+                )
+                }
+
+              <div className="text-center mt-6">
+                {
+                    articles?.length > 3 && (
+                        <button onClick={handleClick} className="bg-[#5BBC2E] px-8 py-2 rounded-lg font-semibold text-lg text-white">{
+                            showAll ? <FaAnglesUp></FaAnglesUp> :<FaAnglesDown></FaAnglesDown>
+                        }</button>
+                    )
+                }
+               </div>
             </div>
+           
         </div>
     );
 };

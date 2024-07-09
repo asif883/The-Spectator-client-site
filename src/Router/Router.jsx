@@ -11,6 +11,7 @@ import Dashboard from "../Layout/Dashboard";
 import DashHome from "../DashPages/DashHome";
 import Users from "../DashPages/Users";
 import Statistics from "../DashPages/Statistics";
+import ArticleDetails from "../Pages/ArticleDetails";
 
 
   const router = createBrowserRouter([
@@ -40,6 +41,11 @@ import Statistics from "../DashPages/Statistics";
               path:'/register',
               element:<Registration></Registration>
             },
+            {
+              path:'details/:id',
+              element:<PrivateRoute><ArticleDetails></ArticleDetails></PrivateRoute>,
+              loader:({params}) => fetch(`http://localhost:5000/details/${params.id}`)
+            }
            
         ]
     },
