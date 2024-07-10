@@ -26,8 +26,10 @@ const AddArticles = () => {
         const date = form.date.value
         const description = form.description.value
         const publisher = form.publisher.value
+        const user_email = form.user_email.value
+        const user_name = form.user_name.value
 
-        const articleInfo= {title, image, tags, date, description, publisher}
+        const articleInfo= {title, image, tags, date, description, publisher, user_email, user_name}
 
         console.log(articleInfo)
 
