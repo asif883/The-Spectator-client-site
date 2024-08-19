@@ -51,7 +51,14 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                      <div className="flex items-center gap-2">
-                        <NavLink to='/subscription' className='mr-3 font-medium hover:text-[#3A8CFB] hover:border-2 hover:border-blue-400 hover:p-3 hover:rounded-xl'>Subscription</NavLink>
+                        {
+                            user ? 
+                             <Link to='/profile'> 
+                                <img className=" mr-3 w-12 h-12 rounded-full border-2" src={user?.displayName} alt={user?.email} />
+                             </Link>
+                            :
+                            <NavLink to='/register' className='mr-3 font-semibold text-[#3A8CFB] border-2 border-blue-400 px-4 py-2  rounded-xl'>Register</NavLink>
+                        }
                         {
                             user ? <button onClick={handleLogOut} className="bg-[#3A8CFB] text-white px-4 py-2 rounded-xl text-lg font-medium">LogOut</button>
                             :

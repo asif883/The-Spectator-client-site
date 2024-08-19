@@ -114,7 +114,7 @@ const AddArticles = () => {
               <label className="font-medium ">Description:</label><br />
               <textarea className="w-full rounded-lg border border-blue-500" id="description" name="description"  rows="4" required></textarea><br /><br />
   
-              <input className="w-full border  p-3 btn bg-[#3A8CFB] text-lg font-medium text-white" type="submit" value="Add" />
+              <input className="w-full border  p-3 btn bg-[#3A8CFB] text-lg font-medium text-white" type="submit" value="Submit" />
           </div>
         </form>
       </div>

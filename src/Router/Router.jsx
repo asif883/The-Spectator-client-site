@@ -12,6 +12,8 @@ import DashHome from "../DashPages/DashHome";
 import Users from "../DashPages/Users";
 import Statistics from "../DashPages/Statistics";
 import ArticleDetails from "../Pages/ArticleDetails";
+import Profile from "../Pages/Profile";
+import AllArticles from "../Pages/AllArticles";
 
 
   const router = createBrowserRouter([
@@ -45,6 +47,15 @@ import ArticleDetails from "../Pages/ArticleDetails";
               path:'details/:id',
               element:<PrivateRoute><ArticleDetails></ArticleDetails></PrivateRoute>,
               loader:({params}) => fetch(`http://localhost:5000/details/${params.id}`)
+            },
+            {
+              path: '/profile',
+              element: <Profile></Profile>
+            },
+            {
+              path:'/all-articles',
+              element: <AllArticles></AllArticles>,
+              loader: () => fetch ('http://localhost:5000/articles')
             }
            
         ]

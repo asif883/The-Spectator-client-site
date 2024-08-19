@@ -66,24 +66,16 @@ const Articles = () => {
             {/* left  */}
 
             <div className="space-y-4">
-                {
-                    articles?.slice(0, showAll ? articles.length :3 )?.map((article, idx) => 
-                    <div key={idx} className="text-center">
-                        <img className="h-64 w-full" src={article.image} alt="" />
-                        <h3 className="text-lg font-bold mt-2 hover:underline hover:text-blue-400">{article.title}</h3>
-                   </div>
-                )
-                }
+                
+                    <div className="text-center">
+                        <img className="h-[550px] w-full" src='https://i.ibb.co/92d4tqN/14207149-SL-122419-26390-23.jpg' alt="" />
+                        <h3 className="text-lg font-bold mt-2 hover:underline hover:text-blue-400"></h3>
 
-              <div className="text-center mt-6">
-                {
-                    articles?.length > 3 && (
-                        <button onClick={handleClick} className="bg-[#5BBC2E] px-8 py-2 rounded-lg font-semibold text-lg text-white">{
-                            showAll ? <FaAnglesUp></FaAnglesUp> :<FaAnglesDown></FaAnglesDown>
-                        }</button>
-                    )
-                }
-               </div>
+                        <Link to='/subscription'>
+                            <button className="mt-8 font-semibold text-[#3A8CFB] border-2 border-blue-400 px-4 py-2  rounded-xl">Subscribe Now</button>
+                        </Link>
+                   </div>
+            
             </div>
            
         </div>
