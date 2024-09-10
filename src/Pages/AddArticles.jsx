@@ -33,7 +33,7 @@ const AddArticles = () => {
 
         console.log(articleInfo)
 
-        axios.post('http://localhost:5000/articles',articleInfo)
+        axios.post('https://newspaper-server-silk.vercel.app/articles',articleInfo)
         .then(res =>{
           const data= res.data
           // console.log(data)

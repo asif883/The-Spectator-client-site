@@ -46,7 +46,7 @@ import AllArticles from "../Pages/AllArticles";
             {
               path:'details/:id',
               element:<PrivateRoute><ArticleDetails></ArticleDetails></PrivateRoute>,
-              loader:({params}) => fetch(`http://localhost:5000/details/${params.id}`)
+              loader:({params}) => fetch(`https://newspaper-server-silk.vercel.app/details/${params.id}`)
             },
             {
               path: '/profile',
@@ -55,7 +55,7 @@ import AllArticles from "../Pages/AllArticles";
             {
               path:'/all-articles',
               element: <AllArticles></AllArticles>,
-              loader: () => fetch ('http://localhost:5000/articles')
+              loader: () => fetch ('https://newspaper-server-silk.vercel.app/articles')
             }
            
         ]
