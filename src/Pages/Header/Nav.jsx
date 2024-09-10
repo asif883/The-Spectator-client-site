@@ -9,8 +9,8 @@ const Nav = () => {
                 <NavLink to='/add-articles' className='mr-3 font-medium hover:text-[#3A8CFB]'>Add Articles</NavLink>            
                 <NavLink to='/all-articles' className='mr-3 font-medium hover:text-[#3A8CFB]'>All Articles</NavLink>                        
                 <NavLink to='/dashboard/home' className='mr-3 font-medium hover:text-[#3A8CFB]'>Dashboard</NavLink>            
-                <NavLink to='/my-articles' className='mr-3 font-medium hover:text-[#3A8CFB]'>My Articles</NavLink>            
-                <NavLink to='/premium-articles' className='mr-3 font-medium hover:text-[#3A8CFB]'>Premium Articles</NavLink> 
+                <NavLink to='' className='mr-3 font-medium hover:text-[#3A8CFB]'>My Articles</NavLink>            
+                <NavLink to='' className='mr-3 font-medium hover:text-[#3A8CFB]'>Premium Articles</NavLink> 
               </nav>
         </div>
     );
