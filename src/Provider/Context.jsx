@@ -1,26 +1,46 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+/* eslint-disable react/prop-types */
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
 import app from "../../public/Firebase.config";
+import { GoogleAuthProvider } from "firebase/auth";
+import axios from "axios";
 
 export  const AuthContext= createContext(null);
 
+
+const googleProvider = new GoogleAuthProvider()
 const auth = getAuth(app)
 
 const Context = ({children}) => {
     const [user, setUser] = useState (null);
     const [loading , setLoading] =useState(true)
     
-    useEffect( ()=>{
-        const unsubscribe = onAuthStateChanged(auth , currentUser =>{
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged( auth , currentUser=>{
             setUser(currentUser)
+        
+        if(currentUser){
+            axios.post('http://localhost:5000/authentication',{email: currentUser?.email})
+            .then(data=>{
+                if(data.data){
+                    localStorage.setItem('access-token', data?.data?.token)
+                    setLoading(false)
+                }
+            })
+        }
+        else{
+            localStorage.removeItem('access-token')
             setLoading(false)
-        })
-        return() =>{
+        }
+
+    })
+
+        return ()=>{
             unsubscribe()
         }
-    },[])
+    }, [])
 
 
     const logIN =(email,password)=>{
@@ -37,12 +57,17 @@ const Context = ({children}) => {
         setLoading(true)
         return signOut(auth)
     }
+    const googleLogin =() =>{
+        setLoading(true)
+        return signInWithPopup( auth , googleProvider)
+    }
     const authInfo= {
         user,
         loading,
         logIN,
         singUp,
-        logOut
+        logOut,
+        googleLogin
     }
     return (
         <AuthContext.Provider value={authInfo}>

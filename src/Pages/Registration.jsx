@@ -4,6 +4,7 @@ import { IoIosEyeOff,IoMdEye  } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/Context";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 
 const Registration = () => {
@@ -22,8 +23,16 @@ const Registration = () => {
         const form = new FormData (e.currentTarget)
         const email = form.get('email');
         const password = form.get('password');
+        const name = form.get('name');
+        const role = 'publisher';
+
+        const userInfo= {
+            email,
+            name,
+            role 
+        }
         
-            // console.log (email, password);
+         // console.log(userInfo);
         
             const regExp =/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/
             if(password === ""){
@@ -51,16 +60,23 @@ const Registration = () => {
         }
 
         singUp(email, password)
-        .then(result =>{
-            console.log(result.user)
+        .then( () =>{
+
+            axios.post('http://localhost:5000/users', userInfo)
+            .then((res) =>{
+            // console.log(res.data)
             
-            Swal.fire({
-                title: 'Success!',
-                text: 'Registration Successful',
-                icon: 'success',
-                confirmButtonText: 'Ok'
-              });
+            if(res.data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Registration Successful',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  }); 
+            }
           })
+        })      
+        
           .catch (error =>{
             console.error( error.message)
             Swal.fire({
@@ -89,7 +105,7 @@ const Registration = () => {
                                 <span className="label-text text-xl font-semibold">Name</span>
                             </label>
                                 
-                            <input type="text" name="Name"  placeholder="Enter Your Name"className="input input-bordered border border-green-300" required />
+                            <input type="text" name="name"  placeholder="Enter Your Name"className="input input-bordered border border-green-300" required />
                            
                         </div>
                         <div className="form-control">

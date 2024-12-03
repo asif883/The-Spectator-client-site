@@ -54,7 +54,7 @@ const Navbar = () => {
                         {
                             user ? 
                              <Link to='/profile'> 
-                                <img className=" mr-3 w-12 h-12 rounded-full border-2" src={user?.displayName} alt={user?.email} />
+                                <img className=" mr-3 w-12 h-12 rounded-full border-2" src={user?.photoURL} alt={user?.email} />
                              </Link>
                             :
                             <NavLink to='/register' className='mr-3 font-semibold text-[#3A8CFB] border-2 border-blue-400 px-4 py-2  rounded-xl'>Register</NavLink>

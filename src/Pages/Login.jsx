@@ -2,7 +2,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoIosEyeOff,IoMdEye  } from "react-icons/io";
 
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa6";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/Context";
 import Swal from "sweetalert2";
@@ -10,7 +9,7 @@ import Swal from "sweetalert2";
 
 
 const Login = () => {
-    const{logIN} = useContext(AuthContext)
+    const{logIN, googleLogin} = useContext(AuthContext)
     const [showPassword, setShowPassword] =useState(false)
     const[password, setPassword] =useState('');
 
@@ -54,6 +53,10 @@ const Login = () => {
         })
 
      
+    }
+
+    const handleGoogleLogin =() =>{
+        googleLogin()
     }
     return (
         <div className="flex flex-col lg:flex-row items-center max-w-7xl mx-auto">
@@ -102,11 +105,8 @@ const Login = () => {
       <div className="">
                     <h1 className="text-center font-semibold">Or, Login with</h1>
                   <div className="text-center mt-6 pb-8">
-                      <button  className="mr-3 border border-blue-300 p-1 rounded-xl">
+                      <button onClick={handleGoogleLogin} className="mr-3 border border-blue-300 p-1 rounded-xl">
                           <FcGoogle className="w-10 h-10" />
-                      </button>
-                      <button  className="mr-3 border border-blue-300  p-1 rounded-xl">
-                          <FaGithub className="w-10 h-10"/>
                       </button>
                      
                   </div>
