@@ -1,19 +1,19 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/Context";
-import Select from 'react-select'
 import axios from "axios";
 import Swal from "sweetalert2";
 
 
 const AddArticles = () => {
 
-    const options = [
-        { value: 'The Guardian', label: 'The Guardian' },
-        { value: 'Reuters', label: 'Reuters' },
-        { value: 'The Wall Street Journal', label: 'The Wall Street Journal' },
-        { value: 'Fox News', label: 'Fox News' },
-        { value: 'NPR', label: 'NPR' }
-      ]
+    const [publishers , setPublisher] = useState()
+    useEffect(()=>{
+      fetch('http://localhost:5000/all-publisher')
+      .then(res => res.json())
+      .then(data => setPublisher(data))
+    }, [])
+    
+    
 
     const {user} = useContext(AuthContext)
 
@@ -33,7 +33,7 @@ const AddArticles = () => {
 
         console.log(articleInfo)
 
-        axios.post('https://newspaper-server-silk.vercel.app/articles',articleInfo)
+        axios.post('http://localhost:5000/pending-articles',articleInfo)
         .then(res =>{
           const data= res.data
           // console.log(data)
@@ -45,25 +45,26 @@ const AddArticles = () => {
               confirmButtonText: 'Ok'
             });
           }
+        window.location.reload() 
         })
     }
 
 
     return (
-        <div className="max-w-4xl mx-auto mt-10 p-8 shadow-xl  rounded-xl">
+        <div className="max-w-4xl mx-auto mt-10 p-8 shadow-xl  rounded-xl bg-blue-100">
         <h1 className="text-center text-4xl text-[#3A8CFB] font-bold">Add Article</h1>
   
         <form onSubmit={handleArticleAdd} className="mt-10" >
           <div className="flex gap-4 mb-2">
             <div className="flex-1">
             <label className="font-medium">Title:</label><br />
-              <input className="input input-bordered border border-blue-500 w-full" type="text" id="title" name="title" required />
+              <input className="input  w-full" type="text" id="title" name="title" required />
             </div>
   
              <div className="flex-1">
                 <div className="flex-1">
                     <label className="font-medium">Tags:</label><br />
-                    <input className="input input-bordered border border-blue-500  w-full" type="text" id="tags" name="tags"  required />
+                    <input className="input   w-full" type="text" id="tags" name="tags"  required />
     
                 </div>
              </div>
@@ -76,12 +77,12 @@ const AddArticles = () => {
            <div className="flex gap-4 mb-4">
                <div className="flex-1">
                   <label className="font-medium">Image:</label><br />
-                  <input className="input input-bordered border border-blue-500  w-full" type="text" id="image" name="image" required />
+                  <input className="input   w-full" type="text" id="image" name="image" required />
                </div>
 
                <div className="flex-1 mb-2">
                      <label className="font-medium">Post Date:</label>  <br />
-                     <input className="input w-full input-bordered border  border-blue-500 " type="date" name="date" id="date" />
+                     <input className="input w-full " type="date" name="date" id="date" />
             </div>
   
                
@@ -92,27 +93,32 @@ const AddArticles = () => {
                   
                  <div className="flex-1">
                    <label className="font-medium" >User Email:</label><br />
-                   <input defaultValue={user?.email} className="input input-bordered border border-blue-500  w-full" type="email" id="user_email" name="user_email"  required />
+                   <input defaultValue={user?.email} className="input  border   w-full" type="email" id="user_email" name="user_email"  required />
                 </div>
                 <div className="flex-1">
                    
                   <label className="font-medium">User Name:</label><br />
-                  <input defaultValue={user?.displayName} className="input input-bordered border border-blue-500  w-full" type="text" id="user_name" name="user_name"  required />
+                  <input defaultValue={user?.displayName} className="input  border   w-full" type="text" id="user_name" name="user_name"  required />
                   </div>
            </div>
 
             <div className="my-6">
                 
-             <label className="font-medium">Publisher:</label><br />       
-              <Select className="rounded-xl border border-blue-500 w-full "  options={options}  name="publisher" id="publisher"
-              required/>
+             <label className="font-medium">Publisher:</label><br />
+             <select className="select  rounded-xl border  w-full" name="publisher" id="publisher" required>
+              <option disabled selected>Choose one</option>
+              
+              {
+                 publishers?.map((publisher ) => <option key={publisher?.id}>{publisher?.name}</option> )
+            }
+            </select>
 
             </div>
            
   
           <div>
               <label className="font-medium ">Description:</label><br />
-              <textarea className="w-full rounded-lg border border-blue-500" id="description" name="description"  rows="4" required></textarea><br /><br />
+              <textarea className="w-full rounded-lg border" id="description" name="description"  rows="4" required></textarea><br /><br />
   
               <input className="w-full border  p-3 btn bg-[#3A8CFB] text-lg font-medium text-white" type="submit" value="Submit" />
           </div>

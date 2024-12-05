@@ -14,6 +14,8 @@ import Statistics from "../DashPages/Statistics";
 import ArticleDetails from "../Pages/ArticleDetails";
 import Profile from "../Pages/Profile";
 import AllArticles from "../Pages/AllArticles";
+import AddPublisher from "../DashPages/AddPublisher";
+import PendingArticles from "../DashPages/PendingArticles";
 
 
   const router = createBrowserRouter([
@@ -75,6 +77,15 @@ import AllArticles from "../Pages/AllArticles";
         {
           path:'/dashboard/statistics',
           element: <Statistics></Statistics>
+        },
+        {
+          path:'/dashboard/addPublisher',
+          element: <AddPublisher/>
+        }
+        ,
+        {
+          path:'/dashboard/pendingArticles',
+          element: <PendingArticles/>
         }
       ]
     }

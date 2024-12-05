@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaAnglesDown } from "react-icons/fa6";
-import { FaAnglesUp } from "react-icons/fa6";
+
 
 
 const Articles = () => {
@@ -14,12 +13,7 @@ const Articles = () => {
         },[])
 
 
-        const [showAll, setShowAll] = useState(false);
-
-        const handleClick = () => {
-            setShowAll(!showAll);
-          };
-
+        
     return (
         <div className="my-16 max-w-7xl mx-auto grid gap-6 grid-cols-4">
             {/* right */}
@@ -27,7 +21,7 @@ const Articles = () => {
             <div className="space-y-6">
 
                 {
-                   articles.map((article , idx) => 
+                   articles?.slice(0, 10)?.map((article , idx) => 
                     <div key={idx}>
                           <p className="text-blue-400 uppercase mb-1">{article.tags}</p>
                           <Link to={`details/${article._id}`} className="text-xl font-bold hover:underline hover:text-blue-400">{article.title}</Link>
@@ -41,7 +35,7 @@ const Articles = () => {
 
            <div className="col-span-2 space-y-6">
                {
-                    articles?.slice(0, showAll ? articles.length :2 )?.map((article ,idx) => 
+                    articles?.slice(0, 2)?.map((article ,idx) => 
                         <Link to={`details/${article._id}`} key={idx} className="text-center ">
                             <img className="w-[700px] h-[400px]" src={article.image} alt={article.tags} />
                             <h1 className="text-2xl font-bold hover:underline hover:text-blue-400 mb-6">{article.title}</h1>
@@ -50,15 +44,6 @@ const Articles = () => {
                     )
                 }
 
-            <div className="text-center mt-8">
-                {
-                    articles?.length > 2 && (
-                        <button onClick={handleClick} className="border px-8 py-2 rounded-lg font-semibold text-lg">{
-                            showAll ? <FaAnglesUp></FaAnglesUp> :<FaAnglesDown></FaAnglesDown>
-                        }</button>
-                    )
-                }
-            </div>
            </div>
 
            

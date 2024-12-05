@@ -1,6 +1,7 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 
-
+import { HiUserAdd } from "react-icons/hi";
+import { MdPendingActions } from "react-icons/md";
 import { HiMiniUsers } from "react-icons/hi2";
 import { IoStatsChart } from "react-icons/io5";
 
@@ -15,14 +16,19 @@ const Dashboard = () => {
                      <Link to='/' className="text-white text-3xl font-bold border-b pb-4">The Spectator</Link>     
                      <NavLink to='/dashboard/statistics' ><h3 className="mt-8 flex gap-1 text-white items-center text-xl font-semibold "><IoStatsChart className="border-2 border-white p-1 rounded-xl text-2xl"></IoStatsChart>Overview</h3>
                      </NavLink>
-                    <NavLink to='/dashboard/user' ><h3 className="mt-2 flex gap-1 text-white items-center text-xl font-semibold"><HiMiniUsers className="border-2 border-white p-1 rounded-xl text-2xl"></HiMiniUsers> User</h3>
+                    <NavLink to='/dashboard/user' ><h3 className="mt-2 flex gap-1 text-white items-center text-xl font-semibold"><HiMiniUsers className="border-2 border-white p-1 rounded-xl text-2xl"></HiMiniUsers>All Users</h3>
+                    </NavLink>
+
+                    <NavLink to='/dashboard/addPublisher' ><h3 className="mt-2 flex gap-1 text-white items-center text-xl font-semibold"><HiUserAdd className="border-2 border-white p-1 rounded-xl text-2xl"></HiUserAdd>Add Publisher</h3>
+                    </NavLink>
+                    <NavLink to='/dashboard/pendingArticles' ><h3 className="mt-2 flex gap-1 text-white items-center text-xl font-semibold"><MdPendingActions className="border-2 border-white p-1 rounded-xl text-2xl"></MdPendingActions>Pending Articles</h3>
                     </NavLink>
                     
                 </div>
             </div>
             {/* content */}
 
-            <div className="flex-1 mt-16">
+            <div className="flex-1 p-8">
                 <Outlet></Outlet>
             </div>
         </div>
