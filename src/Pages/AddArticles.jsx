@@ -28,12 +28,13 @@ const AddArticles = () => {
         const publisher = form.publisher.value
         const user_email = form.user_email.value
         const user_name = form.user_name.value
+        const status = 'pending'
 
-        const articleInfo= {title, image, tags, date, description, publisher, user_email, user_name}
+        const articleInfo= {title, image, tags, date, description, publisher, user_email, user_name, status}
 
-        console.log(articleInfo)
+        // console.log(articleInfo)
 
-        axios.post('http://localhost:5000/pending-articles',articleInfo)
+        axios.post('http://localhost:5000/add-articles',articleInfo)
         .then(res =>{
           const data= res.data
           // console.log(data)
@@ -45,13 +46,13 @@ const AddArticles = () => {
               confirmButtonText: 'Ok'
             });
           }
-        window.location.reload() 
+        // window.location.reload() 
         })
     }
 
 
     return (
-        <div className="max-w-4xl mx-auto mt-10 p-8 shadow-xl  rounded-xl bg-blue-100">
+        <div className="max-w-4xl mx-auto mt-10 p-8 shadow-2xl  rounded-xl bg-blue-50">
         <h1 className="text-center text-4xl text-[#3A8CFB] font-bold">Add Article</h1>
   
         <form onSubmit={handleArticleAdd} className="mt-10" >
@@ -64,7 +65,7 @@ const AddArticles = () => {
              <div className="flex-1">
                 <div className="flex-1">
                     <label className="font-medium">Tags:</label><br />
-                    <input className="input   w-full" type="text" id="tags" name="tags"  required />
+                    <input className="input w-full" type="text" id="tags" name="tags"  required />
     
                 </div>
              </div>
@@ -120,7 +121,7 @@ const AddArticles = () => {
               <label className="font-medium ">Description:</label><br />
               <textarea className="w-full rounded-lg border" id="description" name="description"  rows="4" required></textarea><br /><br />
   
-              <input className="w-full border  p-3 btn bg-[#3A8CFB] text-lg font-medium text-white" type="submit" value="Submit" />
+              <input className="w-full rounded-xl border-2 border-blue-300 p-3 hover:bg-[#3A8CFB] text-lg font-medium text-blue-500 hover:text-white" type="submit" value="Submit" />
           </div>
         </form>
       </div>

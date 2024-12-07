@@ -1,30 +1,40 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const PendingArticles = () => {
-    const [pendingArticles , setPendingArticles] = useState()
+    const [articles , setArticles] = useState()
 
     useEffect(()=>{
-        fetch('http://localhost:5000/all-pending-articles')
+        fetch('http://localhost:5000/articles')
         .then(res => res.json())
-        .then( data => setPendingArticles(data))
+        .then( data => setArticles(data))
     },[])
 
     const handleApprove = (pendingArticle) =>{
-        const title = pendingArticle.title
-        const image = pendingArticle.image
-        const tags = pendingArticle.tags
-        const date = pendingArticle.date
-        const description = pendingArticle.description
-        const publisher = pendingArticle.publisher
-        const user_email = pendingArticle.user_email
-        const user_name = pendingArticle.user_name
-        
-        const approveArticleInfo= {title, image, tags, date, description, publisher, user_email, user_name}
-
-        axios.post('http://localhost:5000/approve', approveArticleInfo)
-        .then(res =>{
-            console.log(res.data);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "The Article will added to main page!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, approve it"
+          })
+          .then((result) => {         
+            if(result.isConfirmed){
+                axios.patch(`http://localhost:5000/article/admin/${pendingArticle?._id}`)
+                .then(res =>{
+                    if(res.data.modifiedCount > 0){
+                        Swal.fire({
+                            title: "Article approved Successfully!",
+                            text: `${pendingArticle?.name} Approved`,
+                            icon: "success"
+                          })
+                    }
+                window.location.reload()  
+                })
+            }
         })
     }
 
@@ -40,24 +50,21 @@ const PendingArticles = () => {
                     <table className="table">
                         {/* head */}
                         <thead>
-                        <tr>
-                            <th>
-                            <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label>
+                        <tr className="font-semibold text-sm bg-blue-100">
+                            <th >
+                                Image
                             </th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
-                            <th></th>
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Change Status</th>
                         </tr>
                         </thead>
                         <tbody>
                         {/* row 1 */}
                         {
-                             pendingArticles?.map((pendingArticle) =>
-                                <tr key={pendingArticle.id}>
-                            
+                           articles?.map((pendingArticle) => pendingArticle.status === 'pending' &&    
+
+                          <tr key={pendingArticle.id}>
                             <td>
                             <div className="flex items-center gap-3">
                                 <div className="avatar">
@@ -85,6 +92,7 @@ const PendingArticles = () => {
                         </tr>
                             )
                         }
+                        
                         
                         </tbody>
                     </table>

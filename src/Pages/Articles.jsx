@@ -21,11 +21,14 @@ const Articles = () => {
             <div className="space-y-6">
 
                 {
-                   articles?.slice(0, 10)?.map((article , idx) => 
-                    <div key={idx}>
+                   articles?.slice(0, 10)?.map((article )  =>
+
+                    article.status === 'approve' &&
+                    <div key={article.id}>
                           <p className="text-blue-400 uppercase mb-1">{article.tags}</p>
                           <Link to={`details/${article._id}`} className="text-xl font-bold hover:underline hover:text-blue-400">{article.title}</Link>
-                     </div>
+                     </div>    
+                    
                 )
                 }
                 
@@ -36,6 +39,9 @@ const Articles = () => {
            <div className="col-span-2 space-y-6">
                {
                     articles?.slice(0, 2)?.map((article ,idx) => 
+
+                        article.status === 'approve' &&
+                        
                         <Link to={`details/${article._id}`} key={idx} className="text-center ">
                             <img className="w-[700px] h-[400px]" src={article.image} alt={article.tags} />
                             <h1 className="text-2xl font-bold hover:underline hover:text-blue-400 mb-6">{article.title}</h1>

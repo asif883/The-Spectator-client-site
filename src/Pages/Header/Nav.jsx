@@ -16,7 +16,7 @@ const Nav = () => {
                 <NavLink to='' className='mr-3 font-medium hover:text-[#3A8CFB]'>Premium Articles</NavLink>
                 {
                     role === 'admin' ? 
-                    <NavLink to='/dashboard/home' className='mr-3 font-medium hover:text-[#3A8CFB]'>Dashboard</NavLink>
+                    <NavLink to='/dashboard/statistics' className='mr-3 font-medium hover:text-[#3A8CFB]'>Dashboard</NavLink>
                     :
                     <></>
                 } 
