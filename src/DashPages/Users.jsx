@@ -115,7 +115,7 @@ const Users = () => {
                     </div>
                 </td>
                 <td>
-                    <p className="uppercase font-medium">{user?.role}</p>
+                    <p className="capitalize font-medium">{user?.role}</p>
                 </td>
                 <td>
                     <button onClick={()=>handleAdmin(user)} className="btn-xs">

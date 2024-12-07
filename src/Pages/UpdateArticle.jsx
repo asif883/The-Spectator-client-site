@@ -1,10 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../Provider/Context";
+import { useEffect, useState } from "react";
+import useUserData from "../Hooks/useUserData";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-
-const AddArticles = () => {
+const UpdateArticle = () => {
+    const {id} = useParams()
+    console.log(id);
 
     const [publishers , setPublisher] = useState()
     useEffect(()=>{
@@ -12,12 +14,10 @@ const AddArticles = () => {
       .then(res => res.json())
       .then(data => setPublisher(data))
     }, [])
-    
-    
 
-    const {user} = useContext(AuthContext)
+    const { name, email } = useUserData()
 
-    const handleArticleAdd = e =>{
+    const handleUpdate = (e) =>{
         e.preventDefault();
         const form = e.target;
         const title = form.title.value
@@ -28,36 +28,28 @@ const AddArticles = () => {
         const publisher = form.publisher.value
         const user_email = form.user_email.value
         const user_name = form.user_name.value
-        const status = 'pending'
-        const isPremium = 'no'
 
-        const articleInfo= {title, image, tags, date, description, publisher, user_email, user_name, status, isPremium}
+        const UpdateArticleInfo= {title, image, tags, date, description, publisher, user_email, user_name}
 
-        // console.log(articleInfo)
+        console.log(UpdateArticleInfo);
 
-        axios.post('http://localhost:5000/add-articles',articleInfo)
-        .then(res =>{
-          const data= res.data
-          // console.log(data)
-          if(data.insertedId){
-            Swal.fire({
-              title: 'Success!',
-              text: 'Your article has been added successfully please wait for admin approval',
-              icon: 'success',
-              confirmButtonText: 'Ok'
-            });
-          }
-          window.location.reload()
-        
+        axios.patch(`http://localhost:5000/updateArticle/${id}` , UpdateArticleInfo)
+        .then( res =>{
+            if(res.data.modifiedCount){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Your article has been Updated successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  });
+            }
         })
     }
-
-
     return (
         <div className="max-w-4xl mx-auto mt-10 p-8 shadow-2xl  rounded-xl bg-blue-50">
-        <h1 className="text-center text-4xl text-[#3A8CFB] font-bold">Add Article</h1>
+        <h1 className="text-center text-4xl text-[#3A8CFB] font-bold">Update Article</h1>
   
-        <form onSubmit={handleArticleAdd} className="mt-10" >
+        <form onSubmit={handleUpdate} className="mt-10" >
           <div className="flex gap-4 mb-2">
             <div className="flex-1">
             <label className="font-medium">Title:</label><br />
@@ -85,7 +77,7 @@ const AddArticles = () => {
 
                <div className="flex-1 mb-2">
                      <label className="font-medium">Post Date:</label>  <br />
-                     <input className="input w-full " type="date" name="date" id="date" required/>
+                     <input className="input w-full" type="date" name="date" id="date" required/>
             </div>
   
                
@@ -96,12 +88,12 @@ const AddArticles = () => {
                   
                  <div className="flex-1">
                    <label className="font-medium" >User Email:</label><br />
-                   <input defaultValue={user?.email} className="input  border   w-full" type="email" id="user_email" name="user_email"  required />
+                   <input defaultValue={email} className="input  border   w-full" type="email" id="user_email" name="user_email"  required />
                 </div>
                 <div className="flex-1">
                    
                   <label className="font-medium">User Name:</label><br />
-                  <input defaultValue={user?.displayName} className="input  border   w-full" type="text" id="user_name" name="user_name"  required />
+                  <input defaultValue={name} className="input  border   w-full" type="text" id="user_name" name="user_name"  required />
                   </div>
            </div>
 
@@ -123,11 +115,11 @@ const AddArticles = () => {
               <label className="font-medium ">Description:</label><br />
               <textarea className="w-full rounded-lg border" id="description" name="description"  rows="4" required></textarea><br /><br />
   
-              <input className="w-full rounded-xl border-2 border-blue-300 p-3 hover:bg-[#3A8CFB] text-lg font-medium text-blue-500 hover:text-white" type="submit" value="Submit" />
+              <input className="w-full rounded-xl border-2 border-blue-300 p-3 hover:bg-[#3A8CFB] text-lg font-medium text-blue-500 hover:text-white" type="submit" value="Update" />
           </div>
         </form>
       </div>
     );
 };
 
-export default AddArticles;
+export default UpdateArticle;

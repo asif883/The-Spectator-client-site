@@ -16,6 +16,10 @@ import Profile from "../Pages/Profile";
 import AllArticles from "../Pages/AllArticles";
 import AddPublisher from "../DashPages/AddPublisher";
 import PendingArticles from "../DashPages/PendingArticles";
+import MyArticle from "../Pages/MyArticle";
+import PremiumArticle from "../DashPages/PremiumArticle";
+import UpdateArticle from "../Pages/UpdateArticle";
+import Premium from "../Pages/Premium";
 
 
   const router = createBrowserRouter([
@@ -58,13 +62,26 @@ import PendingArticles from "../DashPages/PendingArticles";
               path:'/all-articles',
               element: <AllArticles></AllArticles>,
               loader: () => fetch ('https://newspaper-server-silk.vercel.app/articles')
-            }
+            },
+            {
+              path:'/my-article',
+              element:<PrivateRoute><MyArticle/></PrivateRoute>
+            },
+            {
+              path:'/update/:id',
+              element:<PrivateRoute><UpdateArticle/></PrivateRoute>
+            },
+            {
+              path:'/premium-article',
+              element:<PrivateRoute><Premium/></PrivateRoute>
+            },
+
            
         ]
     },
     {
       path:'dashboard',
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoute><Dashboard/></PrivateRoute>,
       children: [
         {
           path: '/dashboard/home',
@@ -87,6 +104,11 @@ import PendingArticles from "../DashPages/PendingArticles";
           path:'/dashboard/pendingArticles',
           element: <PendingArticles/>
         }
+        ,
+        {
+          path:'/dashboard/premiumArticles',
+          element: <PremiumArticle/>
+        },
       ]
     }
   ])

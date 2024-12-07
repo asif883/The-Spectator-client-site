@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { PiArticleNyTimesDuotone } from "react-icons/pi";
 
 const PendingArticles = () => {
     const [articles , setArticles] = useState()
@@ -32,9 +34,11 @@ const PendingArticles = () => {
                             icon: "success"
                           })
                     }
-                window.location.reload()  
+                    window.location.reload()
                 })
+                
             }
+           
         })
     }
 
@@ -57,6 +61,7 @@ const PendingArticles = () => {
                             <th>Title</th>
                             <th>Status</th>
                             <th>Change Status</th>
+                            <th>Details</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -85,10 +90,15 @@ const PendingArticles = () => {
                             <br />
                             <span className="badge badge-ghost badge-sm">{pendingArticle?.publisher}</span>
                             </td>
-                            <td>Pending</td>
+                            <td className="capitalize">{pendingArticle?.status}</td>
                             <th>
                             <button onClick={()=> handleApprove(pendingArticle)} className="btn btn-ghost btn-xs">Approve</button>
                             </th>
+                            <td>
+                                <Link to={`/details/${pendingArticle?._id}`}>
+                                  <PiArticleNyTimesDuotone size={24}/>
+                                </Link>
+                            </td>
                         </tr>
                             )
                         }

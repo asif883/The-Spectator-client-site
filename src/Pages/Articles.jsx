@@ -21,7 +21,7 @@ const Articles = () => {
             <div className="space-y-6">
 
                 {
-                   articles?.slice(0, 10)?.map((article )  =>
+                   articles?.slice(0, 8)?.map((article )  =>
 
                     article.status === 'approve' &&
                     <div key={article.id}>
