@@ -1,114 +1,88 @@
-import { IoIosDoneAll } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 const Subscription = () => {
+    const plans = [
+        {
+          title: "Free Trial",
+          price: "Free",
+          description: "Enjoy unlimited access to our articles for 7 days.",
+          features: ["Unlimited Articles", "Basic Support", "No Commitments"],
+          highlight: false,
+        },
+        {
+          title: "Monthly Package",
+          price: "$9.99/month",
+          description: "Perfect for regular readers who love fresh content.",
+          features: ["Unlimited Articles", "Priority Support", "Ad-Free Experience", "Free festival magazine" ,"Breaking news notification"],
+          highlight: true, 
+        },
+        {
+          title: "Annual Package",
+          price: "$99.99/year",
+          description: "Get the best value for an entire year of premium access.",
+          features: [
+            "Unlimited Articles",
+            "Priority Support",
+            "Ad-Free Experience",
+            "Exclusive Content",
+            "Breaking news notification"
+          ],
+          highlight: false,
+        },
+      ];
     return (
-        <div className="max-w-7xl mx-auto  my-10">
+        <div className="max-w-7xl mx-auto my-8 md:my-16">
             <div className="text-center">
                  <h1 className="text-4xl font-bold mb-2">Choose Your Right Plan!</h1>
                  <p>Select from the best plans, ensuring a perfect match. Need more or less?
                      <br /> Customize your subscription for seamless fit!
                  </p>
             </div>
-
-
-
-           <div className="flex gap-8 justify-around  mt-8">
-           <div className="border border-gray-300 p-10 shadow-xl">
-
-
-              <div className="text-center mb-8">
-                 <h1 className="text-3xl font-bold">Free for 1 Week</h1>
-                 <p className="text-2xl font-bold mt-2"><span className="text-3xl">$</span>0</p>
-              </div>
-              <div className="space-y-3">
-                <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Access to latest news</p>
-                <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Access to mobile app</p>
-                <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Free festival magazine</p>
-                <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Early access to podcast</p>
-                <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Breaking news notification</p>
-              </div>
-              <div className="mt-8">
-                 <button className="w-full bg-[#3A8CFB] text-white p-2 rounded-xl font-semibold uppercase hover:bg-white hover:border-[#3A8CFB] hover:border-2 hover:text-[#3A8CFB]">Start Free Trail</button>
-              </div>
-            
-            {/* <div className="flex justify-between">
-               <h3 className="text-2xl font-bold">Premium <br /> individual</h3>
-               <p className="text-xl font-bold">Free <br />for 1 month</p>
-             </div>
-            <li>Cancel anytime</li>
-            <li>1 premium account</li>
-            <li>15hour/month of listening time from any audio book</li>
-            <div className="mt-8">
-                <button className="btn btn-primary w-full">Try free for 1 month</button>
-            </div> */}
-        </div>
-
-
-        <div className="border border-gray-300 p-10 shadow-xl">
-
-
-            <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold">Monthly</h1>
-            <p className="text-2xl font-bold mt-2"><span className="text-3xl">$</span>10</p>
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+           {plans.map((plan, index) => (
+          <div
+            key={index}
+            className={`border rounded-lg p-6 shadow-lg hover:shadow-2xl transition-all flex flex-col justify-between ${
+              plan.highlight
+                ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white"
+                : "bg-white"
+            }`}
+          >
+            <div>
+              <h3 className="text-2xl font-semibold mb-4">{plan.title}</h3>
+              <p className={`text-xl font-bold mb-4 ${plan.highlight ? "text-white" : "text-gray-800"}`}>
+                {plan.price}
+              </p>
+              <p className={`${plan?.highlight ? "text-gray-200" :"text-gray-600"}  mb-6`}>{plan.description}</p>
+              <ul className="mb-6">
+                {plan.features.map((feature, idx) => (
+                  <li
+                    key={idx}
+                    className={`flex items-center mb-2 ${
+                      plan.highlight ? "text-white" : "text-gray-700"
+                    }`}
+                  >
+                    <span className="mr-2 text-green-500">&#10003;</span> {feature}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="space-y-3">
-            <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Access to latest news</p>
-            <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Access to mobile app</p>
-            <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Free festival magazine</p>
-            <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Early access to podcast</p>
-            <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Breaking news notification</p>
-            </div>
-            <div className="mt-8">
-            <Link to='/subscription'><button className="w-full bg-[#3A8CFB] text-white p-2 rounded-xl font-semibold uppercase hover:bg-white hover:border-[#3A8CFB] hover:border-2 hover:text-[#3A8CFB]">subscribe</button>
+            <Link to='/subscription'><button
+              className={`w-full py-3 rounded-lg font-semibold mt-auto ${
+                plan.highlight
+                  ? "bg-white text-blue-600 hover:bg-gray-200"
+                  : "bg-blue-600 text-white hover:bg-blue-700"
+              }`}
+            >
+              {plan.highlight ? "Most Popular" : "Choose Plan"}
+            </button>
             </Link>
-            </div>
-
-            {/* <div className="flex justify-between">
-            <h3 className="text-2xl font-bold">Premium <br /> individual</h3>
-            <p className="text-xl font-bold">Free <br />for 1 month</p>
-            </div>
-            <li>Cancel anytime</li>
-            <li>1 premium account</li>
-            <li>15hour/month of listening time from any audio book</li>
-            <div className="mt-8">
-            <button className="btn btn-primary w-full">Try free for 1 month</button>
-            </div> */}
-         </div>
+          </div>
+        ))}
+      </div>
 
 
-
-         <div className="border border-gray-300 p-10 shadow-xl">
-
-
-            <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold">Annually</h1>
-            <p className="text-2xl font-bold mt-2"><span className="text-3xl">$</span>49</p>
-            </div>
-            <div className="space-y-3">
-            <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Access to latest news</p>
-            <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Access to mobile app</p>
-            <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Free festival magazine</p>
-            <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Early access to podcast</p>
-            <p className="flex items-center gap-2 text-xl font-medium"><IoIosDoneAll></IoIosDoneAll>Breaking news notification</p>
-            </div>
-            <div className="mt-8">
-            <Link to='/subscription'><button className="w-full bg-[#3A8CFB] text-white p-2 rounded-xl font-semibold uppercase hover:bg-white hover:border-[#3A8CFB] hover:border-2 hover:text-[#3A8CFB]">subscribe</button>
-            </Link>
-            </div>
-
-            {/* <div className="flex justify-between">
-            <h3 className="text-2xl font-bold">Premium <br /> individual</h3>
-            <p className="text-xl font-bold">Free <br />for 1 month</p>
-            </div>
-            <li>Cancel anytime</li>
-            <li>1 premium account</li>
-            <li>15hour/month of listening time from any audio book</li>
-            <div className="mt-8">
-            <button className="btn btn-primary w-full">Try free for 1 month</button>
-            </div> */}
-         </div>
-           </div>
+          
         </div>
     );
 };
