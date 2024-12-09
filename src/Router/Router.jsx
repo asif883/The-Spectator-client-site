@@ -12,7 +12,6 @@ import DashHome from "../DashPages/DashHome";
 import Users from "../DashPages/Users";
 import Statistics from "../DashPages/Statistics";
 import ArticleDetails from "../Pages/ArticleDetails";
-import Profile from "../Pages/Profile";
 import AllArticles from "../Pages/AllArticles";
 import AddPublisher from "../DashPages/AddPublisher";
 import PendingArticles from "../DashPages/PendingArticles";
@@ -20,6 +19,7 @@ import MyArticle from "../Pages/MyArticle";
 import PremiumArticle from "../DashPages/PremiumArticle";
 import UpdateArticle from "../Pages/UpdateArticle";
 import Premium from "../Pages/Premium";
+import Profile from "../Pages/Profile";
 
 
   const router = createBrowserRouter([
@@ -56,7 +56,7 @@ import Premium from "../Pages/Premium";
             },
             {
               path: '/profile',
-              element: <Profile></Profile>
+              element: <Profile/>
             },
             {
               path:'/all-articles',

@@ -1,75 +1,73 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
-import { useKeenSlider } from "keen-slider/react"
-import "keen-slider/keen-slider.min.css"
-
+import { Autoplay,  Navigation } from 'swiper/modules';
 import { IoMdEye } from "react-icons/io";
+import { useEffect, useRef, useState } from "react";
 
 
-const animation = { duration: 50000, easing: (t) => t }
 
 const Banner = () => {
+
+  const [trendingArticles , setTrendingArticles] = useState()
+  //  console.log(trendingArticles);
+  useEffect( () =>{
+    fetch(`http://localhost:5000/articles/trending`)
+    .then( res => res.json())
+    .then(data => setTrendingArticles(data))
+  },[])
   
-  const [sliderRef] = useKeenSlider({
-    loop: true,
-    renderMode: "performance",
-    drag: false,
-    created(s) {
-      s.moveToIdx(5, true, animation)
-    },
-    updated(s) {
-      s.moveToIdx(s.track.details.abs + 5, true, animation)
-    },
-    animationEnded(s) {
-      s.moveToIdx(s.track.details.abs + 5, true, animation)
-    },
-  })
+  
+  ;
+  const progressContent = useRef();
+  const onAutoplayTimeLeft = (time) => {
+   
+    progressContent.current = `${Math.ceil(time / 1000)}s`;
+  };
+
   return (
-    <div ref={sliderRef} className="keen-slider h-[450px]">
-      <div className="keen-slider__slide number-slide1">
-          <div className="flex items-center ">
-              <h1 className="text-xl font-bold mb-2">-- No, you can not buy Berkshire stock at a 99% discount — the stock exchange glitched</h1>
-              <p className="text-lg font-semibold mb-2 ml-10 flex gap-1 items-center"> <IoMdEye className="text-xl"></IoMdEye>1000</p>
-          </div>
-        <img className="w-full h-fit" src="https://i.ibb.co/qgYSbXM/658c0dd4ec62ab5daf7eda41.webp" alt="" />
-      </div>
-      {/* 2nd slider */}
-      <div className="keen-slider__slide number-slide2">
-          <div className="flex items-center ">
-               <h1 className="text-xl font-bold mb-2">-- Microsoft is laying off hundreds in its Azure cloud business, sources say</h1>
-              <p className="text-lg font-semibold mb-2 ml-10 flex gap-1 items-center"> <IoMdEye className="text-xl"></IoMdEye>1000</p>
-          </div>
-       
-        <img className="w-full h-fit" src="https://i.ibb.co/dKPc2R3/NKRZSNOPANMWXLLGRM3-CV52-T2-U.jpg" alt="" />
-      </div>
-      {/* 3rd slider */}
-      <div className="keen-slider__slide number-slide3">
-          <div className="flex items-center ">
-              <h1 className="text-xl font-bold mb-2">--Gen Z is hot new status symbol: an AmEx card</h1>
-              <p className="text-lg font-semibold mb-2 ml-10 flex gap-1 items-center"> <IoMdEye className="text-xl"></IoMdEye>1000</p>
-          </div>
-          
-          <img className="w-full h-fit" src="https://i.ibb.co/Czgg5Nw/665a11781cd3b17790422e34.webp" alt="" />
-      </div>
-      {/* 4th slider */}
-      <div className="keen-slider__slide number-slide4">
-           <div className="flex items-center">
-               <h1 className="text-xl font-bold mb-2">-- 6 of the most beautiful places in the world, according to someone who is been to 107 countries</h1>
-              <p className="text-lg font-semibold mb-2 ml-10 flex gap-1 items-center"> <IoMdEye className="text-xl"></IoMdEye>1000</p>
-          </div>
-          
+
+    <div>
+
+    <Swiper 
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        
+        
+        modules={[Autoplay, Navigation]}
+        onAutoplayTimeLeft={onAutoplayTimeLeft}
+        className="mySwiper h-[350px] lg:h-[550px]"
+      >
+
+{
+        trendingArticles?.map((article)=>
+          <SwiperSlide  key={article?._id}> 
+            <div  className="">
+         <div className="flex items-center justify-between px-4 md:px-8">
+            <h1 className="text-sm md:text-xl font-bold mb-2">-- {article?.title}</h1>
+            <p className="text-lg font-semibold mb-2 flex gap-1 items-center"> <IoMdEye className="text-xl"></IoMdEye>{article?.views}</p>
+         </div>
+          <img className="object-cover w-full h-[350px] lg:h-[550px] min-h-fit" src={article?.image} alt={article?.title} />
+         </div>
+          </SwiperSlide>
+        )
+      }
          
-          <img className="w-full h-fit" src="https://i.ibb.co/Q9ymSMC/6650af2da961b37edf39b243.webp" alt="" />
-      </div>
+      </Swiper>
+
       
-      {/* <div className="keen-slider__slide number-slide5">
-
-      </div>
+      
      
-      <div className="keen-slider__slide number-slide6">
-
-      </div> */}
-    </div>
+     
+  </div>
   )
 };
 export default Banner;

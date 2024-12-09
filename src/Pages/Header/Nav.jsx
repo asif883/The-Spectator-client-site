@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom";
 import useUserData from "../../Hooks/useUserData";
+import '../../Css/nav.css'
 
 
 const Nav = () => {
     const {role} = useUserData()
-    console.log(role);
+    // console.log(role);
     return (
-        <div className="mb-8">
+        <div className="mb-8 hidden md:block">
                <nav className="flex justify-center border-y py-3">
                 <NavLink to='/' className='mr-3 font-medium hover:text-[#3A8CFB]'>Home</NavLink>            
                 <NavLink to='/add-articles' className='mr-3 font-medium hover:text-[#3A8CFB]'>Add Articles</NavLink>            

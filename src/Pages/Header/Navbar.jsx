@@ -40,6 +40,8 @@ const Navbar = () => {
                         <li><Link to='/' className="text-lg font-medium">Home</Link></li>
                         <li><Link className="text-lg font-medium">About</Link></li>
                         <li><Link className="text-lg font-medium">Contact Us</Link></li>  
+                        <li><Link className="text-lg font-medium">About</Link></li>
+                        <li><Link className="text-lg font-medium">Contact Us</Link></li>  
                     </ul>
                   </div>
                   <IoSearchSharp className="text-2xl font-medium hover:text-[#3A8CFB]"></IoSearchSharp>

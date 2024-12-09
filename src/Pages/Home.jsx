@@ -1,7 +1,7 @@
 import AllPublisher from "./AllPublisher";
 import Articles from "./Articles";
 import Banner from "./Banner";
-import Nav from "./Header/Nav";
+// import Nav from "./Header/Nav";
 import Subscription from "./Subscription";
 import UserCount from "./UserCount";
 
@@ -9,7 +9,7 @@ import UserCount from "./UserCount";
 const Home = () => {
     return (
         <div>
-            <Nav></Nav>
+          
             <Banner></Banner>
            <AllPublisher/>
            <Articles></Articles>

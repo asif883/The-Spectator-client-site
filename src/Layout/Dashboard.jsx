@@ -6,7 +6,7 @@ import { HiMiniUsers } from "react-icons/hi2";
 import { IoStatsChart } from "react-icons/io5";
 
 
-import '../Pages/Css/dash.css'
+
 
 const Dashboard = () => {
     return (

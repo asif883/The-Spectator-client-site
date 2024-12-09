@@ -1,27 +1,26 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { Parallax } from "react-scroll-parallax";
-import countapi from "countapi-js";
 import { useEffect, useState } from "react";
 
 
-const ArticleDetails = () => {
 
+const ArticleDetails = () => {
+    const {id} = useParams()
     const [count, setCount] = useState(null);
 
      useEffect(() => {
-        countapi.visits().then((result) => {
-            setCount(result.value);
-        });
-        }, []);
+           fetch(`http://localhost:5000/article/${id}`)
+           .then(res => res.json())
+           .then( data => setCount(data))
+        }, [id]);
 
-        console.log(count)
 
     const details = useLoaderData()
     const {title, image, tags, date, user_name, publisher, description} = details;
     return (
         <div className="max-w-7xl mx-auto mb-16">
              <div className="mt-16 mb-8 text-center">
-                 <p className="text-2xl font-semibold">#{tags},{count}</p>
+                 <p className="text-2xl font-semibold">#{tags} <br />{count?.views}</p>
                  <p className="text-xl font-semibold underline"><span className="text-2xl ">Publisher:</span>  {publisher}</p>
              </div>
                  
