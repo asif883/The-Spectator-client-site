@@ -20,8 +20,9 @@ const ArticleDetails = () => {
     return (
         <div className="max-w-7xl mx-auto mb-16">
              <div className="mt-16 mb-8 text-center">
-                 <p className="text-2xl font-semibold">#{tags} <br />{count?.views}</p>
+                 <p className="text-2xl font-semibold">#{tags}</p>
                  <p className="text-xl font-semibold underline"><span className="text-2xl ">Publisher:</span>  {publisher}</p>
+                 <p className="text-xl font-semibold underline"><span className="text-2xl ">Total Viewers:</span>{count?.views}</p>
              </div>
                  
                     <img className="w-9/12 mx-auto h-[550px]" src={image} alt="" />
