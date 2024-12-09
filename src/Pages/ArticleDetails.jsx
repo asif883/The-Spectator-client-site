@@ -20,9 +20,9 @@ const ArticleDetails = () => {
     return (
         <div className="max-w-7xl mx-auto mb-16">
              <div className="mt-16 mb-8 text-center">
-                 <p className="text-2xl font-semibold">#{tags}</p>
                  <p className="text-xl font-semibold underline"><span className="text-2xl ">Publisher:</span>  {publisher}</p>
-                 <p className="text-xl font-semibold underline"><span className="text-2xl ">Total Viewers:</span>{count?.views}</p>
+                 <p className="text-xl font-semibold"><span className="text-2xl ">Total Viewers:</span> {count?.views}</p>
+                 
              </div>
                  
                     <img className="w-9/12 mx-auto h-[550px]" src={image} alt="" />
@@ -35,9 +35,9 @@ const ArticleDetails = () => {
                     <p className="text-xl font-semibold">{user_name}</p>
                     <p>{date}</p>
                 </div>
-                <h1 className="text-4xl font-bold my-8 underline">{title}</h1>
+                <h1 className="text-4xl font-bold mt-8 underline">{title}</h1>
+                <p className="text-2xl font-semibold mb-8">#{tags}</p>
                 <p className="text-lg font-medium">{description}</p>
-
               </Parallax>
         </div>
     );
