@@ -13,7 +13,7 @@ const MyArticle = () => {
     // console.log(myArticles);
 
     useEffect(()=>{
-        fetch( `http://localhost:5000/my-article/${email}`)
+        fetch( `https://newspaper-server-silk.vercel.app/my-article/${email}`)
         .then(res => res.json())
         .then( data => setMyArticles(data))
     })
@@ -28,7 +28,7 @@ const MyArticle = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-            axios.delete(`http://localhost:5000/articles/${id}`)
+            axios.delete(`https://newspaper-server-silk.vercel.app/articles/${id}`)
             .then(res =>{
                 if(res.data.modifiedCount){
                     Swal.fire({

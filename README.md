@@ -1,6 +1,6 @@
 # The Spectator
 
-## Live Link: 
+## Live Link: https://the-spectator-b282d.web.app
 
 **The Spectator** is a full-stack newspaper website that delivers the latest news and articles on various topics. The website is designed to provide a user-friendly experience for readers to stay up-to-date with current events. The project uses modern web technologies like React, Node.js, Express, MongoDB, and more.
 

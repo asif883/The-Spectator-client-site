@@ -8,7 +8,7 @@ const PendingArticles = () => {
     const [articles , setArticles] = useState()
 
     useEffect(()=>{
-        fetch('http://localhost:5000/articles')
+        fetch('https://newspaper-server-silk.vercel.app/articles')
         .then(res => res.json())
         .then( data => setArticles(data.articles))
     },[])
@@ -25,7 +25,7 @@ const PendingArticles = () => {
           })
           .then((result) => {         
             if(result.isConfirmed){
-                axios.patch(`http://localhost:5000/article/admin/${pendingArticle?._id}`)
+                axios.patch(`https://newspaper-server-silk.vercel.app/article/admin/${pendingArticle?._id}`)
                 .then(res =>{
                     if(res.data.modifiedCount > 0){
                         Swal.fire({

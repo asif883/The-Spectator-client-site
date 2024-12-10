@@ -18,7 +18,7 @@ const AddPublisher = () => {
                 name, logo, description
             }
             console.log(publisherInfo);
-          axios.post('http://localhost:5000/publisher' , publisherInfo)
+          axios.post('https://newspaper-server-silk.vercel.app/publisher' , publisherInfo)
           .then(res =>{
             if(res.data.insertedId){
                 Swal.fire({

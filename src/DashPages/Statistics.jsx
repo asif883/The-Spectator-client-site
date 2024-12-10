@@ -9,7 +9,7 @@ const Statistics = () => {
     
     const fetchPublisherData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/articles');
+        const response = await axios.get('https://newspaper-server-silk.vercel.app/articles');
         const articles = response.data.articles;
         
         const publisherCount = {};

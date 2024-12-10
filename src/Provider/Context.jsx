@@ -22,7 +22,7 @@ const Context = ({children}) => {
             setUser(currentUser)
         
         if(currentUser){
-            axios.post('http://localhost:5000/authentication',{email: currentUser?.email})
+            axios.post('https://newspaper-server-silk.vercel.app/authentication',{email: currentUser?.email})
             .then(data=>{
                 if(data.data){
                     localStorage.setItem('access-token', data?.data?.token)

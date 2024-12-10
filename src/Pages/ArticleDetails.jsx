@@ -9,7 +9,7 @@ const ArticleDetails = () => {
     const [count, setCount] = useState(null);
 
      useEffect(() => {
-           fetch(`http://localhost:5000/article/${id}`)
+           fetch(`https://newspaper-server-silk.vercel.app/article/${id}`)
            .then(res => res.json())
            .then( data => setCount(data))
         }, [id]);

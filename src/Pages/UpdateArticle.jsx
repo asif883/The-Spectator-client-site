@@ -10,7 +10,7 @@ const UpdateArticle = () => {
 
     const [publishers , setPublisher] = useState()
     useEffect(()=>{
-      fetch('http://localhost:5000/all-publisher')
+      fetch('https://newspaper-server-silk.vercel.app/all-publisher')
       .then(res => res.json())
       .then(data => setPublisher(data))
     }, [])
@@ -33,7 +33,7 @@ const UpdateArticle = () => {
 
         console.log(UpdateArticleInfo);
 
-        axios.patch(`http://localhost:5000/updateArticle/${id}` , UpdateArticleInfo)
+        axios.patch(`https://newspaper-server-silk.vercel.app/updateArticle/${id}` , UpdateArticleInfo)
         .then( res =>{
             if(res.data.modifiedCount){
                 Swal.fire({

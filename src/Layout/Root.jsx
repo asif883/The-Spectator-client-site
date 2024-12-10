@@ -9,7 +9,7 @@ const Root = () => {
     const [loading , setLoading] = useState(true)
 
     useEffect(()=>{
-        fetch('http://localhost:5000/articles')
+        fetch('https://newspaper-server-silk.vercel.app/articles')
         .then(res => res.json())
         .then(data=> {
             console.log(data);

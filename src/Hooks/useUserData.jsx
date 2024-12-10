@@ -11,7 +11,7 @@ const useUserData = () => {
     
     useEffect(()=>{
         const fetchData =()=>{
-            axios.get(`http://localhost:5000/user/${user?.email}`)
+            axios.get(`https://newspaper-server-silk.vercel.app/user/${user?.email}`)
             .then(res =>{
                setUserData(res.data);
             })

@@ -8,7 +8,7 @@ const AddArticles = () => {
 
     const [publishers , setPublisher] = useState()
     useEffect(()=>{
-      fetch('http://localhost:5000/all-publisher')
+      fetch('https://newspaper-server-silk.vercel.app/all-publisher')
       .then(res => res.json())
       .then(data => setPublisher(data))
     }, [])
@@ -35,7 +35,7 @@ const AddArticles = () => {
 
         // console.log(articleInfo)
 
-        axios.post('http://localhost:5000/add-articles',articleInfo)
+        axios.post('https://newspaper-server-silk.vercel.app/add-articles',articleInfo)
         .then(res =>{
           const data= res.data
           // console.log(data)

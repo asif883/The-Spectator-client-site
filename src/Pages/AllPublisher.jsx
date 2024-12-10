@@ -6,7 +6,7 @@ const AllPublisher = () => {
     const [publishers, setPublisher] = useState()
     // console.log(publishers);
     useEffect(()=>{
-        fetch('http://localhost:5000/all-publisher')
+        fetch('https://newspaper-server-silk.vercel.app/all-publisher')
         .then( res => res.json())
         .then( data => setPublisher(data))
     },[])

@@ -12,7 +12,7 @@ const Profile = () => {
 
 
   useEffect(()=>{
-      fetch( `http://localhost:5000/my-article/${email}`)
+      fetch( `https://newspaper-server-silk.vercel.app/my-article/${email}`)
       .then(res => res.json())
       .then( data => setArticles(data))
   })
@@ -28,7 +28,7 @@ const Profile = () => {
     const updateInfo ={ name, imageURL }
    
 
-    axios.patch(`http://localhost:5000/updateUser/${email}`, updateInfo)
+    axios.patch(`https://newspaper-server-silk.vercel.app/updateUser/${email}`, updateInfo)
     .then( res => {
       if(res.data.modifiedCount){
         Swal.fire({

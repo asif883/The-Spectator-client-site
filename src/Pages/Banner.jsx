@@ -16,7 +16,7 @@ const Banner = () => {
   const [trendingArticles , setTrendingArticles] = useState()
   //  console.log(trendingArticles);
   useEffect( () =>{
-    fetch(`http://localhost:5000/articles/trending`)
+    fetch(`https://newspaper-server-silk.vercel.app/articles/trending`)
     .then( res => res.json())
     .then(data => setTrendingArticles(data))
   },[])

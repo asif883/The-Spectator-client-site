@@ -8,7 +8,7 @@ const PremiumArticle = () => {
     const [articles , setArticles] = useState()
 
     useEffect(()=>{
-        fetch('http://localhost:5000/articles')
+        fetch('https://newspaper-server-silk.vercel.app/articles')
         .then(res => res.json())
         .then( data => setArticles(data.articles))
     },[])
@@ -24,7 +24,7 @@ const PremiumArticle = () => {
             confirmButtonText: "Yes, make it!"
           }).then((result) => {
             if (result.isConfirmed) {
-            axios.patch(`http://localhost:5000/article/premium/${id}`)
+            axios.patch(`https://newspaper-server-silk.vercel.app/article/premium/${id}`)
             .then(res =>{
                 // console.log(res.data);
                 if(res.data.modifiedCount){

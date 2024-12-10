@@ -16,7 +16,7 @@ const Users = () => {
     // console.log(user);
 
     useEffect(()=>{
-       fetch('http://localhost:5000/allUsers')
+       fetch('https://newspaper-server-silk.vercel.app/allUsers')
        .then(res => res.json())
        .then( data => setUser(data))
     }, [])
@@ -33,7 +33,7 @@ const Users = () => {
           })
           .then((result) => {         
             if(result.isConfirmed){
-                axios.patch(`http://localhost:5000/users/admin/${user?._id}`)
+                axios.patch(`https://newspaper-server-silk.vercel.app/users/admin/${user?._id}`)
                 .then(res =>{
                     if(res.data.modifiedCount > 0){
                         Swal.fire({
@@ -60,7 +60,7 @@ const Users = () => {
           }).then((result) => {
          
             if(result.isConfirmed){
-                axios.delete(`http://localhost:5000/users/${user?._id}`)
+                axios.delete(`https://newspaper-server-silk.vercel.app/users/${user?._id}`)
                 .then( res =>{
                     if(res.data.deletedCount > 0 ){
                         Swal.fire({

@@ -64,7 +64,7 @@ const Registration = () => {
         singUp(email, password)
         .then( () =>{
 
-            axios.post('http://localhost:5000/users', userInfo)
+            axios.post('https://newspaper-server-silk.vercel.app/users', userInfo)
             .then((res) =>{
             // console.log(res.data)
             

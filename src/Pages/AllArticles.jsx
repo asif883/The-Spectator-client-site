@@ -21,7 +21,7 @@ const AllArticles = () => {
     useEffect(()=>{
          setLoading(true)
          const fetch = async()=>{
-            const res = await  axios.get(`http://localhost:5000/articles?title=${search}&publisher=${publisher}&tags=${tag}`)
+            const res = await  axios.get(`https://newspaper-server-silk.vercel.app/articles?title=${search}&publisher=${publisher}&tags=${tag}`)
              
             setArticles(res.data.articles)
             setPublisher(res.data.publishers)
