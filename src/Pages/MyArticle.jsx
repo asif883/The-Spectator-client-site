@@ -10,7 +10,7 @@ const MyArticle = () => {
     const {email} = useUserData()
     // console.log(email);
     const [myArticles , setMyArticles] = useState()
-    console.log(myArticles);
+    // console.log(myArticles);
 
     useEffect(()=>{
         fetch( `http://localhost:5000/my-article/${email}`)

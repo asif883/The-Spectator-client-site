@@ -24,12 +24,14 @@ const Registration = () => {
         const email = form.get('email');
         const password = form.get('password');
         const name = form.get('name');
+        const imageURL = form.get('imageURL');
         const role = 'publisher';
 
         const userInfo= {
             email,
             name,
-            role 
+            role,
+            imageURL 
         }
         
          // console.log(userInfo);
@@ -112,7 +114,7 @@ const Registration = () => {
                             <label className="label">
                                 <span className="label-text text-xl font-semibold">Photo Url</span>
                             </label>
-                            <input type="text" name="photoURL" placeholder="Photo_url" className="input input-bordered border border-blue-300"/>
+                            <input type="text" name="imageURL" placeholder="Photo_url" className="input input-bordered border border-blue-300"/>
                         </div>
                         <div className="form-control">
                             <label className="label">

@@ -49,7 +49,14 @@ const Navbar = () => {
                         {
                             user ? 
                              <Link to='/profile'> 
+                                   {
+                                user?.photoURL 
+                                ?
                                 <img className="mr-1 md:mr-3 w-8 md:w-12 h-8 md:h-12 rounded-full border-2" src={user?.photoURL} alt={user?.email} />
+                                : 
+                                <><img className='mr-1 md:mr-3 w-8 md:w-12 h-8 md:h-12 rounded-full border-2' src="https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg" alt={user?.email} /></>
+                            }
+                              
                              </Link>
                             :
                             <NavLink to='/register' className='ml-2 mr-1 md:mr-3 font-semibold text-[#3A8CFB] border-2 border-blue-400 px-2 md:px-4 py-1 md:py-2  text-xs md:text-lg  rounded-xl'>Register</NavLink>

@@ -4,15 +4,30 @@ import { HiUserAdd } from "react-icons/hi";
 import { MdPendingActions } from "react-icons/md";
 import { HiMiniUsers } from "react-icons/hi2";
 import { IoStatsChart } from "react-icons/io5";
+import { CiMenuFries } from "react-icons/ci";
 
 
 
 
 const Dashboard = () => {
     return (
-        <div className=" flex gap-5">
-            <div className="w-64 min-h-screen bg-blue-400 p-4 ">
-                <div className="space-y-6">
+
+        <div>
+            <div className="drawer lg:drawer-open">
+            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content p-5 md:p-10 ">
+                <label htmlFor="my-drawer-2" className="btn drawer-button mb-6 lg:hidden">
+                    <CiMenuFries size={24}/>
+                </label>
+             <Outlet/>
+            
+            </div>
+
+                <div className="drawer-side">
+                <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
+                <div className="min-h-screen bg-blue-400 p-4">
+                 {/* Sidebar content here */}
+                 <div className="space-y-6">
                      <Link to='/' className="text-white text-3xl font-bold border-b pb-4">The Spectator</Link>     
                      <NavLink to='/dashboard/statistics' ><h3 className="mt-8 flex gap-1 text-white items-center text-xl font-semibold "><IoStatsChart className="border-2 border-white p-1 rounded-xl text-2xl"></IoStatsChart>Overview</h3>
                      </NavLink>
@@ -28,13 +43,11 @@ const Dashboard = () => {
                     </NavLink>
                     
                 </div>
-            </div>
-            {/* content */}
-
-            <div className="flex-1 p-8">
-                <Outlet></Outlet>
+                </div>
             </div>
         </div>
+        
+        </div> 
     );
 };
 

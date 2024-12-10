@@ -77,7 +77,7 @@ const AddPublisher = () => {
                    
             </div>
 
-            <button type='submit' className='w-full border-2 mt-4  px-4  rounded-lg py-3 bg-[#60A5FA] text-white  font-semibold'>Add Product</button>
+            <button type='submit' className='w-full border-2 mt-4  px-4  rounded-lg py-3 bg-[#60A5FA] text-white  font-semibold'>Add Publisher</button>
           
            
       </form>
