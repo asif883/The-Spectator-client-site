@@ -13,7 +13,7 @@ const AllPublisher = () => {
     return (
     <div className="py-16 ">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-extrabold text-center text-gray-900 mb-12">
+        <h2 className="text-2xl md:text-4xl font-extrabold text-center text-gray-900 mb-12">
           Meet Our Publishers
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">

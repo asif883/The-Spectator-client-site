@@ -10,7 +10,7 @@ const PremiumArticle = () => {
     useEffect(()=>{
         fetch('http://localhost:5000/articles')
         .then(res => res.json())
-        .then( data => setArticles(data))
+        .then( data => setArticles(data.articles))
     },[])
 
     const handlePremium = (id) =>{
@@ -26,7 +26,7 @@ const PremiumArticle = () => {
             if (result.isConfirmed) {
             axios.patch(`http://localhost:5000/article/premium/${id}`)
             .then(res =>{
-                console.log(res.data);
+                // console.log(res.data);
                 if(res.data.modifiedCount){
                     Swal.fire({
                         title: "Success!",

@@ -50,7 +50,7 @@ const AllArticles = () => {
             </div>
             
         <div className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
-         <div>
+         <div className="flex gap-2 flex-col-reverse md:flex-col">
          <SearchBar handleSearch={handleSearch}/>
          <button onClick={handleReset} className='px-6 py-3 border rounded-md border-blue-300  text-blue-400 mt-2'>Reset</button>
          </div>

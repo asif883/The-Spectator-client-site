@@ -15,10 +15,10 @@ const Articles = () => {
 
         
     return (
-        <div className="my-16 max-w-7xl mx-auto grid gap-6 grid-cols-4">
+        <div className="my-16 max-w-7xl mx-auto grid gap-6 grid-cols-1 md:grid-cols-4">
             {/* right */}
 
-            <div className="space-y-6">
+            <div className="space-y-6 lg:block hidden">
 
                 {
                    articles?.slice(0, 8)?.map((article )  =>
@@ -56,7 +56,7 @@ const Articles = () => {
 
             {/* left  */}
 
-            <div className="space-y-4">
+            <div className="space-y-4 lg:block hidden">
                 
                     <div className="text-center">
                         <img className="h-[550px] w-full" src='https://i.ibb.co/92d4tqN/14207149-SL-122419-26390-23.jpg' alt="" />

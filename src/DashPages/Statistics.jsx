@@ -3,7 +3,7 @@ import useUserData from "../Hooks/useUserData";
 
 const Statistics = () => {
     const userData = useUserData()
-    console.log(userData);
+    // console.log(userData);
     const {email, role, name} = userData
 
     const [articles , setArticles] = useState([]);
@@ -11,7 +11,7 @@ const Statistics = () => {
     useEffect(()=>{
         fetch('http://localhost:5000/articles')
         .then(res => res.json())
-        .then(data => setArticles(data))
+        .then(data => setArticles(data.articles))
     },[])
     return (
         <div className="p-8 min-h-screen">

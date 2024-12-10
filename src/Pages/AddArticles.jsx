@@ -58,7 +58,7 @@ const AddArticles = () => {
         <h1 className="text-center text-4xl text-[#3A8CFB] font-bold">Add Article</h1>
   
         <form onSubmit={handleArticleAdd} className="mt-10" >
-          <div className="flex gap-4 mb-2">
+          <div className="flex flex-col md:flex-row gap-4 mb-2">
             <div className="flex-1">
             <label className="font-medium">Title:</label><br />
               <input className="input  w-full" type="text" id="title" name="title" required />
@@ -72,12 +72,12 @@ const AddArticles = () => {
                 </div>
              </div>
           </div>
-          <div className="flex gap-4 mb-4">
+          <div className="flex flex-col md:flex-row gap-4 mb-4">
            
                  
            </div>
        
-           <div className="flex gap-4 mb-4">
+           <div className="flex flex-col md:flex-row gap-4 mb-4">
                <div className="flex-1">
                   <label className="font-medium">Image:</label><br />
                   <input className="input   w-full" type="text" id="image" name="image" required />
@@ -92,7 +92,7 @@ const AddArticles = () => {
              
            </div>
            
-           <div className="flex gap-4 mb-4">
+           <div className="flex flex-col md:flex-row gap-4 mb-4">
                   
                  <div className="flex-1">
                    <label className="font-medium" >User Email:</label><br />

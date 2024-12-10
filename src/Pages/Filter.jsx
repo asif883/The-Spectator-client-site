@@ -6,7 +6,7 @@ const Filter = ({publishers,tags,setPublishers,setAllTags}) => {
 
     return (
         <div>
-            <div className="dropdown dropdown-left dropdown-end">
+            <div className="dropdown dropdown-bottom dropdown-end">
                 <div tabIndex={0} role="button" className=""><p  className='p-3 border-2 w-48 rounded-md border-blue-300  text-blue-600 mb-6 flex gap-2 items-center justify-center'><FiFilter/> Filter </p></div>
                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-6 shadow">
                 <div className='flex flex-col gap-2 items-center'>
