@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const AllPublisher = () => {
     const [publishers, setPublisher] = useState()
-    console.log(publishers);
+    // console.log(publishers);
     useEffect(()=>{
         fetch('http://localhost:5000/all-publisher')
         .then( res => res.json())
@@ -17,7 +17,7 @@ const AllPublisher = () => {
           Meet Our Publishers
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {publishers?.map((publisher) => (
+          {publishers?.slice(0,6).map((publisher) => (
             <Link to='/all-articles'
               key={publisher.id}
               className="group relative bg-white shadow-xl rounded-xl overflow-hidden transform hover:-translate-y-2 transition duration-300 flex flex-col"

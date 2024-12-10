@@ -61,7 +61,7 @@ import Profile from "../Pages/Profile";
             {
               path:'/all-articles',
               element: <AllArticles></AllArticles>,
-              loader: () => fetch ('https://newspaper-server-silk.vercel.app/articles')
+              
             },
             {
               path:'/my-article',

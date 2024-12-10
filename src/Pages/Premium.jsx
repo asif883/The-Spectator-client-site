@@ -7,7 +7,7 @@ const Premium = () => {
     useEffect(()=>{
         fetch('http://localhost:5000/articles')
         .then(res => res.json())
-        .then( data => setArticles(data))
+        .then( data => setArticles(data.articles))
     },[])
 
     return (

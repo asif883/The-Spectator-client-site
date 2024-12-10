@@ -1,9 +1,46 @@
-import { Link, useLoaderData } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Loading from "./Loading";
+
+import Card from "./Card";
+import SearchBar from "./Seacrh";
+import Filter from "./Filter";
 
 const AllArticles = () => {
-    const allArticles = useLoaderData()
+    const [loading , setLoading] = useState(true)
+    const [articles , setArticles] = useState([])
+   
+    const [search , setSearch] = useState("")
+    console.log(search);
+    const [publisher, setPublishers] =useState("")
+    const [tag, setAllTags] = useState("")
 
-    console.log(allArticles)
+    const [publishers, setPublisher] =useState([])
+    const [tags, setTags] = useState([])
+
+    useEffect(()=>{
+         setLoading(true)
+         const fetch = async()=>{
+            const res = await  axios.get(`http://localhost:5000/articles?title=${search}&publisher=${publisher}&tags=${tag}`)
+             
+            setArticles(res.data.articles)
+            setPublisher(res.data.publishers)
+            setTags(res.data.tag)
+            setLoading(false)        
+        }
+         fetch()    
+    },[search, publisher, tag])
+    
+
+    const handleSearch =(e)=>{
+      e.preventDefault()
+      setSearch(e.target.search.value)
+      e.target.search.value=''
+    }
+
+    const handleReset =() =>{
+      window.location.reload()
+    }
     return (
         <div className="max-w-7xl mx-auto ">
             <div className="my-10 ">
@@ -11,78 +48,46 @@ const AllArticles = () => {
                All Articles
             </h2>
             </div>
-            {/* Search and Sort Options */}
+            
         <div className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
-          {/* Search Bar */}
-          <input
-            type="text"
-            placeholder="Search articles..."
-            className="w-full sm:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            // value={searchQuery}
-            // onChange={(e) => setSearchQuery(e.target.value)}
-          />
-
-          {/* Sort Dropdown */}
-          <select
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            // value={sortOption}
-            // onChange={(e) => setSortOption(e.target.value)}
-          >
-            <option value="title">Sort by Title</option>
-            <option value="publisher">Sort by Publisher</option>
-          </select>
+         <div>
+         <SearchBar handleSearch={handleSearch}/>
+         <button onClick={handleReset} className='px-6 py-3 border rounded-md border-blue-300  text-blue-400 mt-2'>Reset</button>
+         </div>
+         <Filter 
+         publishers={publishers} 
+         tags={tags}
+         setPublishers={setPublishers}
+         setAllTags={setAllTags}
+         />
         </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {
-                allArticles.map((article) =>
+
+          
+        {
+            loading ?( <Loading/>)
+            :( <>
+             {
+              articles?.length === 0 ? 
+             (<div>
+                <h1 className="text-2xl text-red-500 font-bold text-center min-h-screen flex items-center justify-center">No Article found</h1>
+               </div>) :
+
+                   (<div className='grid gap-6 md:gap-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+                   {
+                   articles?.map((article) =>
                     article.status === 'approve' &&
             
-            <div
-              key={article.id}
-              className="relative group bg-white shadow-md rounded-xl overflow-hidden transform hover:shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col"
-            >
-              
-              <img
-                src={article.image}
-                alt={article.title}
-                className="w-full h-56 object-cover"
-              />
+                  <Card key={article?._id} article={article}></Card>)
+                  }
+                     </div>) 
+                  }
+                    </>)
+          }
 
-              
-              <div className="p-6 flex-grow">
-               
-                <span className="bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full">
-                  {article.tags}
-                </span>
 
-                
-                <h3 className="text-xl font-bold text-gray-800 mt-4 group-hover:text-indigo-600 transition duration-300">
-                  {article.title}
-                </h3>
 
-                
-                <p className="text-gray-600 text-sm mt-2 ">
-                  {article.description.slice(0, 100)}...
-                </p>
-              </div>
 
-              
-              <div className="w-full mt-auto bg-gray-100 p-4 text-right">
-                <p className="text-sm text-gray-500">
-                  Published by:{" "}
-                  <span className="text-gray-800 font-semibold">
-                    {article.publisher}
-                  </span>
-                </p>
-                <Link to={`/details/${article._id}`}><button className="text-indigo-500 font-semibold hover:text-indigo-700 hover:underline">
-                  Details
-                </button>
-                </Link>
-              </div>
-            </div>
-              )
-            }
-        </div>
+            
         </div>
     );
 };
