@@ -44,7 +44,7 @@ const Banner = () => {
         
         modules={[Autoplay, Navigation]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}
-        className="mySwiper h-[350px] lg:h-[550px]"
+        className="mySwiper h-[350px] lg:h-[550px] z-50"
       >
 
 {
