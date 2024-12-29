@@ -12,7 +12,7 @@ const Root = () => {
         fetch('https://newspaper-server-silk.vercel.app/articles')
         .then(res => res.json())
         .then(data=> {
-            console.log(data);
+            // console.log(data);
             setLoading(false)
         })
     },[])

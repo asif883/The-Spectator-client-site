@@ -5,17 +5,22 @@ import { MdOutlineDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import Loading from "./Loading";
 
 const MyArticle = () => {
     const {email} = useUserData()
     // console.log(email);
     const [myArticles , setMyArticles] = useState()
+    const [ loading , setLoading] = useState(true)
     // console.log(myArticles);
 
     useEffect(()=>{
         fetch( `https://newspaper-server-silk.vercel.app/my-article/${email}`)
         .then(res => res.json())
-        .then( data => setMyArticles(data))
+        .then( data => {
+            setMyArticles(data)
+            setLoading(false)
+        })
     })
     const handleDelete = (id) =>{
         Swal.fire({
@@ -47,7 +52,13 @@ const MyArticle = () => {
     }
     return (
         <div className="max-w-7xl mx-auto min-h-screen">
-            <div className="text-center">
+            <div>
+                {
+                    loading?
+                    <><Loading/></>
+                    :
+                    <>
+                      <div className="text-center">
                 <h1 className="text-3xl font-bold text-gray-800 my-10">My Articles</h1>
             </div>
             <div className="overflow-x-auto">
@@ -68,6 +79,13 @@ const MyArticle = () => {
                         <tbody>
                         {/* row  */}
                         {
+                            loading ?
+                            <>
+                            <Loading/>
+                            </>
+                            :
+                            <>
+                            {
                            myArticles?.map((Article) => 
                           <tr key={Article.id}>
                             <td>
@@ -111,11 +129,16 @@ const MyArticle = () => {
                         </tr>
                             )
                         }
+                            </>
+                        }
                         
                         
                         </tbody>
                     </table>
-                    </div>
+            </div>
+                    </>
+                }
+            </div>
         </div>
     );
 };

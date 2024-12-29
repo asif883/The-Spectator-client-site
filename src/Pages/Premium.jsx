@@ -1,18 +1,29 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
 const Premium = () => {
     const [articles , setArticles] = useState()
+    const [ loading , setLoading] = useState(true)
 
     useEffect(()=>{
         fetch('https://newspaper-server-silk.vercel.app/articles')
         .then(res => res.json())
-        .then( data => setArticles(data.articles))
+        .then( data =>{
+          setArticles(data.articles)
+          setLoading(false)
+        } )
     },[])
 
     return (
         <div className="max-w-7xl mx-auto min-h-screen">
-            <div className="text-center">
+            <div>
+              {
+                loading ?
+                <><Loading/></>
+                :
+                <>
+                <div className="text-center">
                 <h1 className="text-3xl font-bold text-gray-800 mt-10 mb-16">Premium Articles</h1>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -54,6 +65,9 @@ const Premium = () => {
             </div>
             </div>
             ))}
+            </div>
+                </>
+              }
             </div>
         </div>
     );
