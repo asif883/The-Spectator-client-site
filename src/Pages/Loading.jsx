@@ -1,15 +1,19 @@
-import { FallingLines } from "react-loader-spinner";
+import { Grid } from "react-loader-spinner";
 
 const Loading = () => {
     return (
         <div>
             <div className='flex items-center justify-center min-h-screen h-full'>
-            <FallingLines
-                color="#3A8CFB"
-                width="100"
+            <Grid
                 visible={true}
-                ariaLabel="falling-circles-loading"
-             />
+                height="80"
+                width="80"
+                color="#3A8CFB"
+                ariaLabel="grid-loading"
+                radius="12.5"
+                wrapperStyle={{}}
+                wrapperClass="grid-wrapper"
+            />
             </div>
         </div>
     );

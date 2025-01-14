@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 const Subscription = () => {
@@ -38,7 +39,8 @@ const Subscription = () => {
                      <br /> Customize your subscription for seamless fit!
                  </p>
             </div>
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+           <Fade>
+           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
            {plans.map((plan, index) => (
           <div
             key={index}
@@ -78,8 +80,9 @@ const Subscription = () => {
             </button>
             </Link>
           </div>
-        ))}
-      </div>
+           ))}
+           </div>
+           </Fade>
 
 
           
