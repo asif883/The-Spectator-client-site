@@ -15,7 +15,7 @@ const Articles = () => {
 
         
     return (
-        <div className="my-16 max-w-7xl mx-auto grid gap-6 grid-cols-1 md:grid-cols-4">
+        <div className="my-16 max-w-7xl mx-auto grid gap-6 grid-cols-1 md:grid-cols-4 p-4">
             {/* right */}
 
             <div className="space-y-6 lg:block hidden">
@@ -25,8 +25,8 @@ const Articles = () => {
 
                     article.status === 'approve' &&
                     <div key={article.id}>
-                          <p className="text-blue-400 uppercase mb-1">{article.tags}</p>
-                          <Link to={`details/${article._id}`} className="text-xl font-bold hover:underline hover:text-blue-400">{article.title}</Link>
+                          <p className="text-blue-600 uppercase mb-1 font-semibold text-sm">{article.tags}</p>
+                          <Link to={`details/${article._id}`} className="text-lg text-gray-600 font-medium hover:underline hover:text-blue-400">{article.title}</Link>
                      </div>    
                     
                 )

@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/Context";
 import useUserData from "../../Hooks/useUserData";
+import NavStart from "./NavStart";
 
 const Navbar = () => {
     const {user, logOut} =useContext(AuthContext)
@@ -17,8 +18,10 @@ const Navbar = () => {
           <div className="mt-6 max-w-7xl mx-auto">
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
-
-                <div className="dropdown">
+                   <div className="hidden md:block">
+                        <NavStart/>
+                   </div>
+                  <div className="dropdown block md:hidden">
                     <div tabIndex={0} role="button" className="mr-2 text-2xl font-medium hover:text-[#3A8CFB]">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </div>
@@ -37,7 +40,7 @@ const Navbar = () => {
                 } 
                     </ul>
                   </div>
-                  {/* <img className="w-14 h-14 rounded-full border hidden lg:block" src="https://i.ibb.co/4RxT1Hz/148828-medium-logo-teaser300.png" alt="" /> */}
+               
                 </div>
                 <div className="navbar-center">
                     <div className="">
