@@ -16,7 +16,7 @@ const Premium = () => {
     },[])
 
     return (
-        <div className="max-w-7xl mx-auto min-h-screen">
+        <div className="max-w-7xl mx-auto min-h-screen p-5">
             <div>
               {
                 loading ?
@@ -24,7 +24,7 @@ const Premium = () => {
                 :
                 <>
                 <div className="text-center">
-                <h1 className="text-3xl font-bold text-gray-800 mt-10 mb-16">Premium Articles</h1>
+                <h1 className="text-3xl font-bold text-gray-800  mb-10">Premium Articles</h1>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
              {articles?.map((article) =>
