@@ -57,6 +57,8 @@ const Login = () => {
 
     const handleGoogleLogin =() =>{
         googleLogin()
+
+        navigate(location?.state ? location.state : '/')
     }
     return (
         <div className="flex flex-col lg:flex-row items-center max-w-7xl mx-auto">
@@ -95,7 +97,7 @@ const Login = () => {
                   </div>
              
               <div className="form-control mt-6">
-              <button  className="w-full border-2 mr-4  px-4  rounded-lg py-3 bg-[#3A8CFB] text-white  font-semibold">Login</button>
+              <button  className="w-full border-2 mr-4  px-4  rounded-lg py-3 bg-[#3A8CFB] text-white  font-semibold">Sing In</button>
               </div>
               
               <label className="label">

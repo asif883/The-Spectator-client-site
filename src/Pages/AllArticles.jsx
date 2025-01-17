@@ -42,7 +42,7 @@ const AllArticles = () => {
       window.location.reload()
     }
     return (
-        <div className="max-w-7xl mx-auto ">
+        <div className="max-w-7xl mx-auto p-5">
             <div className="my-10 ">
               <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
                All Articles

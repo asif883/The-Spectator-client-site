@@ -62,12 +62,12 @@ const Navbar = () => {
                               
                              </Link>
                             :
-                            <NavLink to='/register' className='ml-2 mr-1 md:mr-3 font-semibold text-[#3A8CFB] border-2 border-blue-400 px-2 md:px-4 py-1 md:py-2  text-xs md:text-lg  rounded-xl'>Register</NavLink>
+                            <></>
                         }
                         {
                             user ? <button onClick={handleLogOut} className="bg-[#3A8CFB] text-white px-2 md:px-4 py-1 md:py-2 rounded-xl text-xs md:text-lg font-medium">LogOut</button>
                             :
-                            <Link to='/login'><button className="bg-[#3A8CFB] text-white px-2 md:px-4 py-1 md:py-2 rounded-xl text-xs md:text-lg font-medium hover:text-[#3A8CFB] hover:border-2 hover:border-blue-400 hover:px-4 hover:py-2 hover:rounded-xl hover:bg-white">Login</button>
+                            <Link to='/login'><button className="bg-[#3A8CFB] text-white px-2 md:px-4 py-1 md:py-2 rounded-xl text-xs md:text-lg font-medium hover:text-[#3A8CFB] hover:border-2 hover:border-blue-400 hover:px-4 hover:py-2 hover:rounded-xl hover:bg-white">Sing In</button>
                             </Link>
                         }
                     </div>
