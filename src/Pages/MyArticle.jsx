@@ -139,7 +139,7 @@ const MyArticle = () => {
                         :
                         <>
                           
-                             <h1 className="capitalize flex items-center justify-center text-red-600 text-2xl  font-semibold  w-full border">You have not added any articles</h1>
+                             <h1 className="capitalize flex items-center justify-center text-red-600 text-xl md:text-2xl  font-semibold  w-full border">You have not added any articles</h1>
                            
                         </>
 

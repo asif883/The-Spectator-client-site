@@ -5,16 +5,20 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 
+
 const Profile = () => {
   const {email, name, imageURL} = useUserData()
   // console.log(email);
   const [articles , setArticles] = useState()
-
+  const [loading , setLoading] = useState(true)
 
   useEffect(()=>{
       fetch( `https://newspaper-server-silk.vercel.app/my-article/${email}`)
       .then(res => res.json())
-      .then( data => setArticles(data))
+      .then( data => {
+        setArticles(data)
+        setLoading(false)
+      })
   })
 
   const isPremium = false; 
@@ -58,31 +62,46 @@ const Profile = () => {
           <div>
             <h1 className="text-2xl font-semibold text-gray-800 capitalize">{name}</h1>
             <p className="text-gray-600">
-              Articles Published: <span className="font-bold">{articles?.length}</span>
+              Articles Published: <span>
+                {
+                  loading ? <span className="loading loading-dots loading-md"></span>
+                  :
+                  <span className="font-bold">{articles?.length}</span>
+                }
+              </span>
             </p>
           </div>
         </div>
         <div>
-
-        <div className="dropdown dropdown-end">
-          <div tabIndex={0} role="button" className=""><FiEdit size={24}/></div>
-          <ul tabIndex={0} className="dropdown-content menu bg-gray-200 rounded-box z-[1] w-[320px] p-2 shadow">
-                   <form onSubmit={handleSubmit}>
+        <div>
+            
+            <button className="" onClick={()=>document.getElementById('my_modal_5').showModal()}><FiEdit size={24}/></button>
+                <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                <form onSubmit={handleSubmit}>
                    <label className="label ">
-                        <span className="label-text text-xl font-semibold">Your Name</span>
+                        <span className="label-text text-lg font-semibold"> Name</span>
                     </label>
                         
-                    <input type="text" name="name"  placeholder="Your name"className="input input-bordered border border-blue-300 w-full" defaultValue={name} required />
+                    <input type="text" name="name"  placeholder="Your name"className="input input-bordered border border-gray-600 w-full" defaultValue={name} required />
                     
                    <label className="label ">
-                        <span className="label-text text-xl font-semibold">Image URL</span>
+                        <span className="label-text text-lg font-semibold">Image URL</span>
                     </label>
                         
-                    <input type="text" name="image" placeholder="image"className="input input-bordered border border-blue-300 w-full" required />
-                    <input className="p-3 w-full border border-blue-300 mt-3 rounded-lg" type="submit" value='Update' />
-                   </form>
-          </ul>
+                    <input type="text" name="image" placeholder="image"className="input input-bordered border border-gray-600 w-full" required />
+                    <input className="font-semibold p-3 w-full border border-gray-600 mt-3 rounded-lg bg-gray-800 text-gray-300" type="submit" value='Update' />
+                 </form>
+
+                    <div className="modal-action">
+                    <form method="dialog">
+                        <button className="btn">Cancel</button>
+                    </form>
+                    </div>
+                </div>
+            </dialog>
         </div>
+       
           
         </div>
       </div>
@@ -97,11 +116,18 @@ const Profile = () => {
           <ul
             
           >
-            {articles?.map((article, index) => (
+            {
+              loading ? 
+              <><span className="loading loading-dots loading-md"></span></>
+              :
+              <>
+                {articles?.map((article, index) => (
               <li key={index} className="py-1 px-4 hover:bg-gray-100 rounded">
               {index + 1}: {article?.title}
-            </li>
-            ))}
+              </li>
+              ))}
+              </>
+            }
           </ul>
         </div>
       </div>

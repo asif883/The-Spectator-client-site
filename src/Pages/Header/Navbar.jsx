@@ -25,16 +25,16 @@ const Navbar = () => {
                     <div tabIndex={0} role="button" className="mr-2 text-2xl font-medium hover:text-[#3A8CFB]">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-200 rounded-box w-44">
-                    <NavLink to='/' className='mr-3 font-medium hover:text-[#3A8CFB]'>Home</NavLink>            
-                <NavLink to='/add-articles' className='mr-3 font-medium hover:text-[#3A8CFB]'>Add Articles</NavLink>            
-                <NavLink to='/all-articles' className='mr-3 font-medium hover:text-[#3A8CFB]'>All Articles</NavLink>                        
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-black bg-opacity-50 rounded-box w-44 space-y-3 text-white">
+                    <Link to='/' className='  hover:text-[#3A8CFB]'>Home</Link>            
+                <Link to='/add-articles' className='  hover:text-[#3A8CFB]'>Add Articles</Link>            
+                <Link to='/all-articles' className='  hover:text-[#3A8CFB]'>All Articles</Link>                        
                            
-                <NavLink to='/my-article' className='mr-3 font-medium hover:text-[#3A8CFB]'>My Articles</NavLink>            
-                <NavLink to='/premium-article' className='mr-3 font-medium hover:text-[#3A8CFB]'>Premium Articles</NavLink>
+                <Link to='/my-article' className='  hover:text-[#3A8CFB]'>My Articles</Link>            
+                <Link to='/premium-article' className='  hover:text-[#3A8CFB]'>Premium Articles</Link>
                 {
                     role === 'admin' ? 
-                    <NavLink to='/dashboard/statistics' className='mr-3 font-medium hover:text-[#3A8CFB]'>Dashboard</NavLink>
+                    <Link to='/dashboard/statistics' className='  hover:text-[#3A8CFB]'>Dashboard</Link>
                     :
                     <></>
                 } 

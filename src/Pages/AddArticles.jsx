@@ -54,8 +54,8 @@ const AddArticles = () => {
 
 
     return (
-        <div className="max-w-4xl mx-auto mt-10 p-8 shadow-2xl  rounded-xl bg-blue-50">
-        <h1 className="text-center text-4xl text-[#3A8CFB] font-bold">Add Article</h1>
+        <div className="max-w-4xl mx-auto mt-10 p-8 shadow-2xl rounded-xl bg-gray-100">
+        <h1 className="text-center text-4xl text-gray-800 font-bold">Add Article</h1>
   
         <form onSubmit={handleArticleAdd} className="mt-10" >
           <div className="flex flex-col md:flex-row gap-4 mb-2">
@@ -123,7 +123,7 @@ const AddArticles = () => {
               <label className="font-medium ">Description:</label><br />
               <textarea className="w-full rounded-lg border" id="description" name="description"  rows="4" required></textarea><br /><br />
   
-              <input className="w-full rounded-xl border-2 border-blue-300 p-3 hover:bg-[#3A8CFB] text-lg font-medium text-blue-500 hover:text-white" type="submit" value="Submit" />
+              <input className="w-full rounded-xl bg-gray-800 p-3  text-lg font-medium text-gray-300 " type="submit" value="Submit" />
           </div>
         </form>
       </div>
