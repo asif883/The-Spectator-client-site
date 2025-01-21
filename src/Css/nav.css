@@ -1,3 +1,15 @@
 .active{
-    color: #3A8CFB;
+    color: #E82D85;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital@1&family=Geist+Mono:wght@100..900&family=Playwrite+IN&display=swap');
+
+.font{
+    font-family: "Geist Mono", serif;
+    font-weight: 700;
+}
+.nav-font{
+    font-family: "Geist Mono", serif;
+    font-weight: 600;
+    
 }

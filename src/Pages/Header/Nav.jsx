@@ -7,17 +7,17 @@ const Nav = () => {
     const {role} = useUserData()
     // console.log(role);
     return (
-        <div className="mb-8 hidden md:block">
-               <nav className="flex justify-center border-y py-3">
-                <NavLink to='/' className='mr-3 font-medium hover:text-[#3A8CFB]'>Home</NavLink>            
-                <NavLink to='/add-articles' className='mr-3 font-medium hover:text-[#3A8CFB]'>Add Articles</NavLink>            
-                <NavLink to='/all-articles' className='mr-3 font-medium hover:text-[#3A8CFB]'>All Articles</NavLink>                        
+        <div className="">
+               <nav className="flex items-center">
+                <NavLink to='/' className='mr-3  hover:text-[#E82D85]'>Home</NavLink>            
+                <NavLink to='/add-articles' className='mr-3  hover:text-[#E82D85]'>Add Articles</NavLink>            
+                <NavLink to='/all-articles' className='mr-3  hover:text-[#E82D85]'>All Articles</NavLink>                        
                            
-                <NavLink to='/my-article' className='mr-3 font-medium hover:text-[#3A8CFB]'>My Articles</NavLink>            
-                <NavLink to='/premium-article' className='mr-3 font-medium hover:text-[#3A8CFB]'>Premium Articles</NavLink>
+                <NavLink to='/my-article' className='mr-3  hover:text-[#E82D85]'>My Articles</NavLink>            
+                <NavLink to='/premium-article' className='mr-3  hover:text-[#E82D85]'>Premium Articles</NavLink>
                 {
                     role === 'admin' ? 
-                    <NavLink to='/dashboard/statistics' className='mr-3 font-medium hover:text-[#3A8CFB]'>Dashboard</NavLink>
+                    <NavLink to='/dashboard/statistics' className='mr-3  hover:text-[#E82D85]'>Dashboard</NavLink>
                     :
                     <></>
                 } 

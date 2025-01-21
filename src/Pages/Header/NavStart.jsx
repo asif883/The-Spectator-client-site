@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import axios from "axios";
 
-
-const NavStart = () => {
+const NavStart = () =>{       
         const [tags, setTags] = useState([])
         const navigate = useNavigate()
 
