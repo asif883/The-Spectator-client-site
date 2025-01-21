@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/Context";
-import useUserData from "../../Hooks/useUserData";
+
 import NavStart from "./NavStart";
 
 const Navbar = () => {
@@ -13,38 +13,23 @@ const Navbar = () => {
         .then()
         .catch()
     }
-    const{ role } = useUserData()
+ 
     return (
-          <div className="mt-6 max-w-7xl mx-auto">
+          <div className="mt-3 max-w-7xl mx-auto">
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
-                   <div className="hidden md:block">
+                   <div className="">
                         <NavStart/>
                    </div>
-                  <div className="dropdown block md:hidden">
-                    <div tabIndex={0} role="button" className="mr-2 text-2xl font-medium hover:text-[#3A8CFB]">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
-                    </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-black bg-opacity-50 rounded-box w-44 space-y-3 text-white">
-                    <Link to='/' className='  hover:text-[#3A8CFB]'>Home</Link>            
-                <Link to='/add-articles' className='  hover:text-[#3A8CFB]'>Add Articles</Link>            
-                <Link to='/all-articles' className='  hover:text-[#3A8CFB]'>All Articles</Link>                        
-                           
-                <Link to='/my-article' className='  hover:text-[#3A8CFB]'>My Articles</Link>            
-                <Link to='/premium-article' className='  hover:text-[#3A8CFB]'>Premium Articles</Link>
-                {
-                    role === 'admin' ? 
-                    <Link to='/dashboard/statistics' className='  hover:text-[#3A8CFB]'>Dashboard</Link>
-                    :
-                    <></>
-                } 
-                    </ul>
-                  </div>
+                 
                
                 </div>
                 <div className="navbar-center">
                     <div className="">
-                         <Link to='/' className="text-2xl md:text-5xl mb-4 font-bold ">The Spectator</Link>  
+                         <Link to='/'> 
+                            <h1 className='font text-2xl md:text-3xl lg:text-5xl text-gray-900'>The Spectator
+                            </h1>
+                         </Link>  
                      </div>
                 </div>
                 <div className="navbar-end">

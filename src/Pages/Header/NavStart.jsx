@@ -1,24 +1,12 @@
-import { useEffect, useState } from "react";
 import { RiMenu2Fill } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa";
-import axios from "axios";
+import '../../Css/nav.css'
+import { NavLink } from "react-router-dom";
+import useUserData from "../../Hooks/useUserData";
+
 
 const NavStart = () =>{       
-        const [tags, setTags] = useState([])
-        const navigate = useNavigate()
-
-        useEffect(()=>{    
-            const fetch = async()=>{
-               const res = await  axios.get(`https://newspaper-server-silk.vercel.app/articles`)             
-               setTags(res.data.tag)
-           }
-            fetch()    
-       },[])
-
-       const handleTagClick = (tag) => {
-        navigate(`/all-articles?tag=${tag}`); 
-    };
+       
+    const {role} = useUserData()
 
     return (
         <div>
@@ -35,16 +23,19 @@ const NavStart = () =>{
                     <ul className="bg-base-100 text-base-content min-h-full w-80 p-6">
                     <h1 className="text-2xl font-bold pb-5">The Spectator</h1>
                     <input type="text" placeholder="Search In The Spectator" className="p-2 border border-gray-700 rounded-md w-full mt-3 mb-5 " />
-                    <li className="space-y-3">
-                    {
-                        tags?.map((tag, idx)=>
-                            <button to='' onClick={()=> handleTagClick(tag)}
-                             key={idx} className='border-b border-dashed border-gray-700 px-4 py-2 text-center font-bold  flex gap-2 items-center justify-between w-full'>
-                                <>{tag}</>
-                                <><FaArrowRight/></>
-                            </button>   
-                        )
-                    }
+                    <li className="flex flex-col gap-3 nav-font">
+                      <NavLink to='/' className='mr-5  hover:text-[#E82D85]'>Home</NavLink>            
+                       <NavLink to='/add-articles' className='mr-5  hover:text-[#E82D85]'>Add Articles</NavLink>            
+                       <NavLink to='/all-articles' className='mr-5  hover:text-[#E82D85]'>All Articles</NavLink>                        
+                                              
+                       <NavLink to='/my-article' className='mr-5  hover:text-[#E82D85]'>My Articles</NavLink>            
+                       <NavLink to='/premium-article' className='mr-5  hover:text-[#E82D85]'>Premium Articles</NavLink>
+                        {
+                             role === 'admin' ? 
+                             <NavLink to='/dashboard/statistics' className='  hover:text-[#E82D85]'>Dashboard</NavLink>
+                                 :
+                               <></>
+                       } 
                     </li>
                     </ul>
                 </div>
