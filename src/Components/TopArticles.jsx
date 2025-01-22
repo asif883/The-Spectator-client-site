@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaRegComment } from "react-icons/fa";
 import '../Css/text.css'
+import { Link } from "react-router-dom";
 
 
 const TopArticles = () => {
@@ -14,7 +15,7 @@ const TopArticles = () => {
      },[])
 
     return (
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-4 max-w-7xl mx-auto p-3 my-10">
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-4 max-w-7xl mx-auto p-3 my-16">
             {/* right */}
 
                 <div className="col-span-3 space-y-8 text-font ">
@@ -26,7 +27,7 @@ const TopArticles = () => {
                                         <img className="w-[320px] h-[200px] object-cover" src={article?.image} alt={article?.title} />
                                         <div>
                                             <p className="text-pink-500 uppercase mb-3 text-lg md:text-xl">{article?.tags}</p>
-                                            <h1 className="text-2xl md:text-3xl  text-gray-900 hover:text-pink-600 ">{article?.title}</h1>
+                                            <Link to={`details/${article._id}`} className="text-2xl md:text-3xl  text-gray-900 hover:text-pink-600 ">{article?.title}</Link>
                                             <div>
                                              <p className="mt-3 text-gray-500 font-medium flex items-center  text-sm md:text-lg">By <span className="text-gray-900 mx-2 ">{article?.user_name}</span> - {article?.date} <span className="ml-4 flex gap-1 items-center"><FaRegComment/>3</span></p>
                                             </div>
@@ -49,7 +50,7 @@ const TopArticles = () => {
                             articles?.slice(11 ,15).map((article) => 
                               <div key={article?._id} className="w-[320px] ">
                                   <img className="object-cover w-[320px] h-[180px]" src={article?.image} alt="" />
-                                 <h1 className="text-black text-font text-2xl hover:text-pink-600">{article?.title}</h1>  
+                                 <Link to={`details/${article._id}`} className="text-black text-font text-2xl hover:text-pink-600">{article?.title}</Link>  
                               </div>
                             )
                         }
