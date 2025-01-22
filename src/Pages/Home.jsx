@@ -1,5 +1,6 @@
-import AllPublisher from "./AllPublisher";
-import Articles from "./Articles";
+import TopArticles from "../Components/TopArticles";
+// import AllPublisher from "./AllPublisher";
+// import Articles from "./Articles";
 import Banner from "./Banner";
 import Subscription from "./Subscription";
 import UserCount from "./UserCount";
@@ -9,8 +10,9 @@ const Home = () => {
         <div>
              <>
                  <Banner></Banner>
-                 <AllPublisher/>
-                 <Articles></Articles>
+                 {/* <AllPublisher/> */}
+                 {/* <Articles></Articles> */}
+                 <TopArticles/>
                  <UserCount></UserCount>
                  <Subscription></Subscription>
            </>

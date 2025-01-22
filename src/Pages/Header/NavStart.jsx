@@ -1,6 +1,6 @@
 import { RiMenu2Fill } from "react-icons/ri";
 import '../../Css/nav.css'
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useUserData from "../../Hooks/useUserData";
 
 
@@ -21,20 +21,21 @@ const NavStart = () =>{
                 <div className="drawer-side z-10">
                     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay "></label>
                     <ul className="bg-base-100 text-base-content min-h-full w-80 p-6">
-                    <h1 className="text-2xl font-bold pb-5">The Spectator</h1>
-                    <input type="text" placeholder="Search In The Spectator" className="p-2 border border-gray-700 rounded-md w-full mt-3 mb-5 " />
-                    <li className="flex flex-col gap-3 nav-font">
-                      <NavLink to='/' className='mr-5  hover:text-[#E82D85]'>Home</NavLink>            
-                       <NavLink to='/add-articles' className='mr-5  hover:text-[#E82D85]'>Add Articles</NavLink>            
-                       <NavLink to='/all-articles' className='mr-5  hover:text-[#E82D85]'>All Articles</NavLink>                        
+                    <h1 className="text-4xl font-bold pb-5 font text-gray-900">The Spectator</h1>
+                    <input type="text" placeholder="Search In The Spectator" className="p-2 border border-gray-600 rounded-md w-full mt-3 mb-5 " />
+                    <li className="flex flex-col gap-3 nav-font text-xl ">
+                      <Link to='/' className=' border-b-2 border-gray-400 border-dotted pb-2'>Home</Link>            
+                                  
+                       <Link to='/all-articles' className='border-b-2 border-gray-400 border-dotted pb-2'>All Articles</Link>                        
                                               
-                       <NavLink to='/my-article' className='mr-5  hover:text-[#E82D85]'>My Articles</NavLink>            
-                       <NavLink to='/premium-article' className='mr-5  hover:text-[#E82D85]'>Premium Articles</NavLink>
+                       <Link to='/my-article' className='border-b-2 border-gray-400 border-dotted pb-2'>My Articles</Link>
+                       <Link to='/add-articles' className='border-b-2 border-gray-400 border-dotted pb-2'>Add Articles</Link>             
+                       <Link to='/premium-article' className='border-b-2 border-gray-400 border-dotted pb-2'>Premium Articles</Link>
                         {
                              role === 'admin' ? 
-                             <NavLink to='/dashboard/statistics' className='  hover:text-[#E82D85]'>Dashboard</NavLink>
-                                 :
-                               <></>
+                             <Link to='/dashboard/statistics' className='border-b-2 border-gray-400 border-dotted pb-2'>Dashboard</Link>
+                             :
+                             <></>
                        } 
                     </li>
                     </ul>

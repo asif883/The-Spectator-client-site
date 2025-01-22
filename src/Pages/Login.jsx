@@ -57,8 +57,10 @@ const Login = () => {
 
     const handleGoogleLogin =() =>{
         googleLogin()
-
-        navigate(location?.state ? location.state : '/')
+        .then(()=>{
+            navigate(location?.state ? location.state : '/')
+        })
+        
     }
     return (
         <div className="flex flex-col lg:flex-row items-center max-w-7xl mx-auto">
