@@ -1,3 +1,4 @@
+import EditorsChoice from "../Components/EditorsChoice";
 import Publishers from "../Components/Publishers";
 import SubscriptionDeal from "../Components/SubscriptionDeal";
 import TopArticles from "../Components/TopArticles";
@@ -11,7 +12,8 @@ const Home = () => {
         <div>
              <>
                 <Banner/>
-                <Publishers/>
+                <EditorsChoice/>
+                {/* <Publishers/> */}
                 <TopArticles/>
                 <UserCounting/>
                 <SubscriptionDeal/>

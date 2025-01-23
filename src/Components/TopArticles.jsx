@@ -19,9 +19,12 @@ const TopArticles = () => {
             {/* right */}
 
                 <div className="col-span-3 space-y-8 text-font ">
-
+                   <div>
+                      <h1 className="text-3xl border-b-2 pb-1 uppercase">Latest In <span className="text-pink-500">Today</span></h1>
+                   </div>
                     {
                         articles?.slice(3 ,9).map((article) => 
+                            article.status === 'approve' &&
                             <div className="border-b-2 pb-8" key={article?._id}>
                                     <div className="flex flex-col md:flex-row px-2 gap-5 ">
                                         <img className="w-[320px] h-[200px] object-cover" src={article?.image} alt={article?.title} />
@@ -47,7 +50,8 @@ const TopArticles = () => {
                     </div>
                     <div className="space-y-5">
                         {
-                            articles?.slice(11 ,15).map((article) => 
+                            articles?.slice(11 ,14).map((article) => 
+                             article.status === 'approve' &&
                               <div key={article?._id} className="w-[320px] ">
                                   <img className="object-cover w-[320px] h-[180px]" src={article?.image} alt="" />
                                  <Link to={`details/${article._id}`} className="text-black text-font text-2xl hover:text-pink-600">{article?.title}</Link>  
