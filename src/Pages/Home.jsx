@@ -1,9 +1,10 @@
 import Publishers from "../Components/Publishers";
+import SubscriptionDeal from "../Components/SubscriptionDeal";
 import TopArticles from "../Components/TopArticles";
-
+import UserCounting from "../Components/UserConuting";
 import Banner from "./Banner";
-import Subscription from "./Subscription";
-import UserCount from "./UserCount";
+
+
 
 const Home = () => {
     return (
@@ -12,8 +13,8 @@ const Home = () => {
                 <Banner/>
                 <Publishers/>
                 <TopArticles/>
-                <UserCount/>
-                <Subscription/>
+                <UserCounting/>
+                <SubscriptionDeal/>
            </>
         </div>
     );

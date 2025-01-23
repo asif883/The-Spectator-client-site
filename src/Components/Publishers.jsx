@@ -37,10 +37,10 @@ const Publishers = () => {
                 
                         {/* Content */}
                         <div className="p-6 text-center flex-grow">
-                          <h3 className="text-2xl font-semibold text-gray-800 group-hover:text-pink-600 transition duration-300">
+                          <h3 className="text-xl font-semibold font text-gray-800  transition duration-300 uppercase">
                             {publisher.name}
                           </h3>
-                          <p className="text-gray-600 mt-3 text-sm group-hover:text-pink-600">
+                          <p className="text-gray-600 mt-3 text-sm ">
                             {publisher.description}
                           </p>
                         </div>
@@ -48,7 +48,7 @@ const Publishers = () => {
                         
                         <div className="p-4 bg-gray-50 text-right mt-auto">
                             <Link >
-                                <button className="text-pink-500 font-semibold hover:text-pink-700 hover:underline">
+                                <button className="text-pink-500 font-semibold hover:text-pink-700 hover:underline font ">
                                 View Articles
                                 </button>
                           </Link>

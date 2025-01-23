@@ -28,7 +28,7 @@ const Navbar = () => {
                 <div className="navbar-center">
                     <div className="">
                          <Link to='/'> 
-                            <h1 className='font text-2xl md:text-3xl lg:text-5xl text-gray-900'>The Spectator
+                            <h1 className='font text-2xl md:text-3xl lg:text-5xl text-gray-800'>The Spectator
                             </h1>
                          </Link>  
                      </div>
