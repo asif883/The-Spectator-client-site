@@ -43,8 +43,8 @@ const SubscriptionDeal = () => {
     <div className="max-w-7xl mx-auto my-8 md:my-16 px-6">
       {/* Section Title */}
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-2 text-gray-900 font">Choose Your Right Plan!</h1>
-        <p className="text-gray-700 text-lg">
+        <h1 className="text-4xl font-bold mb-2 font">Choose Your Right Plan!</h1>
+        <p className="text-gray-600 text-lg">
           Select from the best plans, ensuring a perfect match. Need more or less?
           <br /> Customize your subscription for a seamless fit!
         </p>

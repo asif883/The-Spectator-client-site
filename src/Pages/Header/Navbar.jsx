@@ -16,8 +16,8 @@ const Navbar = () => {
     }
  
     return (
-          <div className="mt-3 max-w-7xl mx-auto">
-            <div className="navbar bg-base-100">
+          <div className="max-w-7xl mx-auto">
+            <div className="navbar">
                 <div className="navbar-start">
                    <div className="">
                         <NavStart/>
@@ -28,7 +28,7 @@ const Navbar = () => {
                 <div className="navbar-center">
                     <div className="">
                          <Link to='/'> 
-                            <h1 className='font text-2xl md:text-3xl lg:text-5xl text-gray-800'>The Spectator
+                            <h1 className='font text-2xl md:text-3xl lg:text-5xl '>The Spectator
                             </h1>
                          </Link>  
                      </div>

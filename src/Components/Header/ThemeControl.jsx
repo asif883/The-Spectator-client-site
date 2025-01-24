@@ -1,11 +1,16 @@
+import useAuth from "../../Hooks/useAuth";
 
 
 const ThemeControl = () => {
+    const { toggleDarkMode } = useAuth()
+    const handleTheme =()=>{
+        toggleDarkMode()
+    }
     return (
         <div>
             <label className="swap swap-rotate">
                 {/* this hidden checkbox controls the state */}
-                <input type="checkbox" className="theme-controller hover:text-[#E82D85]" value="synthwave" />
+                <input onClick={handleTheme} type="checkbox" className="theme-controller hover:text-[#E82D85]" value="synthwave" />
 
                 {/* sun icon */}
                 <svg

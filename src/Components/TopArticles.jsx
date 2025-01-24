@@ -30,9 +30,9 @@ const TopArticles = () => {
                                         <img className="w-[320px] h-[200px] object-cover" src={article?.image} alt={article?.title} />
                                         <div>
                                             <p className="text-pink-500 uppercase mb-3 text-lg md:text-xl">{article?.tags}</p>
-                                            <Link to={`details/${article._id}`} className="text-2xl md:text-3xl  text-gray-900 hover:text-pink-600 ">{article?.title}</Link>
+                                            <Link to={`details/${article._id}`} className="text-2xl md:text-3xl   hover:text-pink-600 ">{article?.title}</Link>
                                             <div>
-                                             <p className="mt-3 text-gray-500 font-medium flex items-center  text-sm md:text-lg">By <span className="text-gray-900 mx-2 ">{article?.user_name}</span> - {article?.date} <span className="ml-4 flex gap-1 items-center"><FaRegComment/>3</span></p>
+                                             <p className="mt-3 text-gray-500 font-medium flex items-center  text-sm md:text-lg">By <span className=" mx-2 ">{article?.user_name}</span> - {article?.date} <span className="ml-4 flex gap-1 items-center"><FaRegComment/>3</span></p>
                                             </div>
                                         </div>
                                         
@@ -54,7 +54,7 @@ const TopArticles = () => {
                              article.status === 'approve' &&
                               <div key={article?._id} className="w-[300px] ">
                                   <img className="object-cover w-[300px] h-[180px]" src={article?.image} alt="" />
-                                 <Link to={`details/${article._id}`} className="text-black text-font text-2xl hover:text-pink-600">{article?.title}</Link>  
+                                 <Link to={`details/${article._id}`} className=" text-font text-2xl hover:text-pink-600">{article?.title}</Link>  
                               </div>
                             )
                         }

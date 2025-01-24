@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../Css/font.css'
+
 
 const PromotionalBanner = () => {
     return (
