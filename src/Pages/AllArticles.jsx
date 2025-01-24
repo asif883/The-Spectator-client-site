@@ -42,17 +42,13 @@ const AllArticles = () => {
       window.location.reload()
     }
     return (
-        <div className="max-w-7xl mx-auto p-5">
-            <div className="my-10 ">
-              <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
-               All Articles
-            </h2>
-            </div>
+        <div className="max-w-7xl mx-auto p-5 mt-6">
+           
             
         <div className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
          <div className="flex gap-2 flex-col-reverse md:flex-col">
          <SearchBar handleSearch={handleSearch}/>
-         <button onClick={handleReset} className='px-6 py-3 border rounded-md border-blue-300  text-blue-400 mt-2'>Reset</button>
+         <button onClick={handleReset} className='px-6 py-3 border rounded-md border-pink-400  text-pink-500 mt-2'>Reset</button>
          </div>
          <Filter 
          publishers={publishers} 
