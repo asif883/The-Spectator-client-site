@@ -44,7 +44,7 @@ const Banner = () => {
         
         modules={[Autoplay, Navigation]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}
-        className="mySwiper h-[350px] lg:h-[550px] z-50"
+        className="mySwiper h-[350px] lg:h-[600px] z-50 object-cover"
       >
 
 {
@@ -52,10 +52,10 @@ const Banner = () => {
           <SwiperSlide  key={article?._id}> 
             <div  className="">
          <div className="flex items-center justify-between px-4 md:px-8">
-            <h1 className="text-sm md:text-xl font-bold mb-2">-- {article?.title}</h1>
-            <p className="text-lg font-semibold mb-2 flex gap-1 items-center"> <IoMdEye className="text-xl"></IoMdEye>{article?.views}</p>
+            <h1 className="text-sm md:text-2xl text-font font-bold mb-2">-- {article?.title}</h1>
+            <p className="text-lg font-semibold mb-2 flex gap-1 items-center text-font"> <IoMdEye className="text-xl"></IoMdEye>{article?.views}</p>
          </div>
-          <img className="object-cover w-full h-[350px] lg:h-[550px] min-h-fit" src={article?.image} alt={article?.title} />
+          <img className="object-cover w-full h-[350px] lg:h-[600px] min-h-fit" src={article?.image} alt={article?.title} />
          </div>
           </SwiperSlide>
         )

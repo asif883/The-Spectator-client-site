@@ -15,7 +15,7 @@ const TopArticles = () => {
      },[])
 
     return (
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-4 max-w-7xl mx-auto p-3 my-16">
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 max-w-7xl mx-auto p-3 my-16">
             {/* right */}
 
                 <div className="col-span-3 space-y-8 text-font ">
@@ -48,12 +48,12 @@ const TopArticles = () => {
                     <div>
                         <h1 className="text-3xl text-pink-600 text-font uppercase mb-5">Trending Articles</h1>
                     </div>
-                    <div className="space-y-5">
+                    <div className="space-y-5 ">
                         {
                             articles?.slice(11 ,14).map((article) => 
                              article.status === 'approve' &&
-                              <div key={article?._id} className="w-[320px] ">
-                                  <img className="object-cover w-[320px] h-[180px]" src={article?.image} alt="" />
+                              <div key={article?._id} className="w-[300px] ">
+                                  <img className="object-cover w-[300px] h-[180px]" src={article?.image} alt="" />
                                  <Link to={`details/${article._id}`} className="text-black text-font text-2xl hover:text-pink-600">{article?.title}</Link>  
                               </div>
                             )
