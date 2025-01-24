@@ -1,5 +1,5 @@
 import EditorsChoice from "../Components/EditorsChoice";
-import Publishers from "../Components/Publishers";
+import PromotionalBanner from "../Components/PromotionalBanner";
 import SubscriptionDeal from "../Components/SubscriptionDeal";
 import TopArticles from "../Components/TopArticles";
 import UserCounting from "../Components/UserConuting";
@@ -13,7 +13,7 @@ const Home = () => {
              <>
                 <Banner/>
                 <EditorsChoice/>
-                {/* <Publishers/> */}
+                <PromotionalBanner/>
                 <TopArticles/>
                 <UserCounting/>
                 <SubscriptionDeal/>
