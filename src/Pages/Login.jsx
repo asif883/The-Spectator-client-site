@@ -78,7 +78,7 @@ const Login = () => {
               </div>
               <div className="form-control relative">
                   <label className="label">
-                      <span className="  text-xl font-semibold">Password</span>
+                      <span className="text-xl font-semibold">Password</span>
                   </label>
                 
                  <input type={showPassword ? "text": "password"} 
@@ -86,9 +86,9 @@ const Login = () => {
                       placeholder="password" 
                       onChange={handleChange}
                       value={password}
-                      className= "input input-bordered border border-pink-300" required/>
+                      className="text-black input input-bordered border border-pink-300" required/>
                 
-                      <span  className="absolute right-3 bottom-4 text-xl" onClick={()=>setShowPassword(!showPassword)}>
+                      <span  className="text-black absolute right-3 bottom-4 text-xl" onClick={()=>setShowPassword(!showPassword)}>
                           {
                               showPassword ? <IoIosEyeOff></IoIosEyeOff> : <IoMdEye></IoMdEye>
                           }
@@ -101,7 +101,7 @@ const Login = () => {
               </div>
               
               <label className="label">
-                  <p className="text-gray-600 text-lg ">New here? Please <Link to='/register' className="underline text-[#E82D85] font-medium">Register</Link></p>
+                  <p className="text-gray-600 text-lg ">New here? Please <Link to='/register' className="underline text-[#E82D85] font-medium">Sing Up</Link></p>
               </label>
       </form>
       <div className="">

@@ -3,10 +3,10 @@
 const SubscriptionPage = () => {
     return (
        <>
-          <div className=" bg-gradient-to-r from-[#89bcfe] to-[#0868E9] mt-8 p-10">
+          <div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-200 text-gray-800 mt-8 p-10">
 
             <div className="text-center">
-                <h1 className="text-3xl md:text-4xl font-bold text-white">Become a subscriber <br />
+                <h1 className="text-3xl md:text-4xl font-bold font">Become a subscriber <br />
                 Cancel anytime. No hidden fees.</h1>
             </div>
 
@@ -14,7 +14,7 @@ const SubscriptionPage = () => {
 
                 <div className=" bg-base-100 w-96 shadow-xl">
                     <figure className="px-10 pt-10 flex flex-col text-center">
-                    <h1 className="text-3xl font-bold">Monthly</h1>
+                    <h1 className="text-3xl font-bold font">Monthly</h1>
                     
                     <p className="text-5xl font-bold mt-4">$10</p>
                     </figure>
@@ -32,7 +32,7 @@ const SubscriptionPage = () => {
                         <h1 className="text-xl text-white">65% OFF</h1>
                     </div>
                     <figure className="px-10 pt-10 flex-col text-center">
-                    <h1 className="text-3xl font-bold">Annual</h1>
+                    <h1 className="text-3xl font-bold font">Annual</h1>
                     
                     <p className="text-5xl font-bold mt-4">$49</p>
                     </figure>
@@ -50,7 +50,7 @@ const SubscriptionPage = () => {
 
 
         <div className="text-center mt-10">
-                <h1 className="text-3xl md:text-4xl font-bold ">Subscribers get unlimited access to:</h1>
+                <h1 className="text-3xl md:text-4xl font-bold font">Subscribers get unlimited access to:</h1>
 
                 <div className="flex flex-col md:flex-row gap-10 justify-center items-center my-8">
                     <div className="text-start">

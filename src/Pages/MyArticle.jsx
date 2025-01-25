@@ -64,13 +64,13 @@ const MyArticle = () => {
                         ?
                         <>
                          <div className="text-center">
-                            <h1 className="text-3xl font-bold text-gray-800 mb-6">My Articles</h1>
+                            <h1 className="text-4xl font-bold  mb-6 font">My Articles</h1>
                          </div>
                      <div className="overflow-x-auto">
                         <table className="table">
                          {/* head */}
                          <thead>
-                         <tr className="font-semibold text-sm bg-blue-100">
+                         <tr className="font-semibold text-sm bg-pink-100">
                              <th >
                                  Image & Tag
                              </th>

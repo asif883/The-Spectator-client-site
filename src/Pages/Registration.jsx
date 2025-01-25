@@ -91,40 +91,35 @@ const Registration = () => {
         })  
     }
     return (
-        <div className="flex flex-col lg:flex-row items-center max-w-7xl mx-auto">
-            
-            <div className="flex-1">
-                <img src="https://i.ibb.co/HgT8cF9/20824341-6368592.jpg" alt="" />
-            </div>
-            
-            <div className="text-center max-w-lg mt-16 shadow-xl rounded-lg pb-8 flex-1">
-                <h1 className="text-4xl text-[#3A8CFB] font-bold">Register Now</h1>
+        <div className="max-w-7xl mx-auto">
 
+            <div className="text-center mx-auto max-w-lg mt-16 shadow-2xl rounded-lg pb-8 flex-1">
+                <h1 className="text-4xl text-[#E82D85] font-bold">Sing Up to Your Account</h1>
 
                 <form onSubmit={handleRegister}  className="card-body">
                         <div className="form-control">
                             <label className="label ">
-                                <span className="label-text text-xl font-semibold">Name</span>
+                                <span className="text-xl font-semibold">Name</span>
                             </label>
                                 
-                            <input type="text" name="name"  placeholder="Enter Your Name"className="input input-bordered border border-green-300" required />
+                            <input type="text" name="name"  placeholder="Enter Your Name"className="input input-bordered border border-pink-300" required />
                            
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text text-xl font-semibold">Photo Url</span>
+                                <span className="text-xl font-semibold">Photo Url</span>
                             </label>
-                            <input type="text" name="imageURL" placeholder="Photo_url" className="input input-bordered border border-blue-300"/>
+                            <input type="text" name="imageURL" placeholder="Photo_url" className="input input-bordered border border-pink-300"/>
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text text-xl font-semibold">Email</span>
+                                <span className="text-xl font-semibold">Email</span>
                             </label>
-                            <input type="email" name='email' placeholder="email" className="input input-bordered border border-blue-300" required />
+                            <input type="email" name='email' placeholder="email" className="input input-bordered border border-pink-300" required />
                         </div>
                         <div className="form-control relative">
                         <label className="label">
-                            <span className=" label-text text-xl font-semibold">Password</span>
+                            <span className=" text-xl font-semibold">Password</span>
                         </label>
                       
                        <input type={showPassword? "text": "password"} 
@@ -132,7 +127,7 @@ const Registration = () => {
                             placeholder="password" 
                             onChange={handleChange}
                             value={password}
-                            className= "input input-bordered border border-blue-300" required />
+                            className= "input input-bordered border border-pink-300" required />
                       
                             <span  className="absolute right-3 bottom-4 text-xl" onClick={()=>setShowPassword(!showPassword)}>
                                 {
@@ -143,10 +138,10 @@ const Registration = () => {
                         </div>
                         
                         <div className="form-control mt-6">
-                        <button className=" w-full border-2 mr-4  px-4  rounded-lg py-3 bg-[#3A8CFB] text-white  font-semibold">Register</button>
+                        <button className=" w-full  mr-4  px-4  rounded-lg py-3 bg-[#E82D85] text-white  font-semibold">Sing Up</button>
                         </div>
                         <label className="label mt-4">
-                            <a className="label-text-alt text-lg">Already have an account? Please <Link to='/login' className="underline text-blue-600">Login</Link></a>
+                            <a className="text-gray-600 text-lg">Already have an account? Please <Link to='/login' className="underline text-pink-600">Sing In</Link></a>
                         </label>
                  </form>
                <p>{message}</p>
